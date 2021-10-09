@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="SOPTHub"
+        android:textColor="@color/sopt"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_id_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_id_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="240dp"
+        android:text="아이디"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_id_in"
+        app:layout_constraintEnd_toEndOf="@+id/et_id_in"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_id_in"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login" />
+
+    <EditText
+        android:id="@+id/et_id_in"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/login_edittext"
+        android:hint="아이디를 입력해주세요"
+        android:padding="12dp"
+        android:textColorHint="#B8B6B6"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_pass_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_id_in" />
+
+    <TextView
+        android:id="@+id/tv_pass_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="240dp"
+        android:text="비밀번호"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_pass_in"
+        app:layout_constraintEnd_toEndOf="@+id/et_pass_in"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_pass_in"
+        app:layout_constraintTop_toBottomOf="@+id/et_id_in" />
+
+    <EditText
+        android:id="@+id/et_pass_in"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/login_edittext"
+        android:hint="비밀번호를 입력해주세요"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColorHint="#B8B6B6"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/bv_login"
+        app:layout_constraintEnd_toEndOf="@id/et_id_in"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/et_id_in"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pass_in" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bv_login"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/login_background"
+        android:text="로그인"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sign_up"
+        app:layout_constraintEnd_toEndOf="@id/et_pass_in"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/et_pass_in"
+        app:layout_constraintTop_toBottomOf="@+id/et_pass_in"
+
+
+        />
+
+    <TextView
+        android:id="@+id/tv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:text="회원가입"
+        android:textColor="#B8B6B6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bv_login" />
+</androidx.constraintlayout.widget.ConstraintLayout>
