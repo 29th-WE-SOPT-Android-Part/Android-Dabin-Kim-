@@ -2,7 +2,7 @@
 |:----------|:----------:|
 | <img src="https://user-images.githubusercontent.com/84564695/136655876-68f490b0-fd21-438c-aef9-3e363e9ea12e.gif" width="200" height="380"/> | <img src="https://user-images.githubusercontent.com/84564695/136656583-3aa640b4-7281-436b-bf82-274b4e2ed58e.gif" width="200" height="380"/> |
 *hint속성..짤 화질이 안좋아서 잘 안보임니다 |회원가입 Text..짤 화질이 안좋아서 잘 안보임다
-## ✅Level1
+## ✅Level1+
 ### ✔***SignInActivity***
  - #### 데이터 입력 확인
 ```kotlin
@@ -124,7 +124,7 @@
             }
         })
  ```
-## ✅Step2 
+## ✅Step3
 ### ✔***DataBinding***
 ```kotlin
   val binding: ActivityDataBindingBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding)
@@ -167,7 +167,7 @@ class Databinding_image(val profile: String) {
     }
 }
 ```
-## ✅Step3
+### ✔setOnClickListener
  setOnClickListener를 람다식으로 간결하게 표현할 수 있는 이유: SAM(Single Abstract Method) 변환
  구현하는 인터페이스(View.OnClickListener)에 구현하는 메소드가 하나(onClick)뿐일때는 이를 람다식으로 변경할 수 있습니다. 
 
