@@ -2,7 +2,7 @@
 |:----------|:----------:|
 | <img src="https://user-images.githubusercontent.com/84564695/136655876-68f490b0-fd21-438c-aef9-3e363e9ea12e.gif" width="200" height="380"/> | <img src="https://user-images.githubusercontent.com/84564695/136656583-3aa640b4-7281-436b-bf82-274b4e2ed58e.gif" width="200" height="380"/> |
 *hint속성..짤 화질이 안좋아서 잘 안보임니다 |회원가입 Text..짤 화질이 안좋아서 잘 안보임다
-## ✅Level1+
+## ✅Level1+Level2
 ### ✔***SignInActivity***
  - #### 데이터 입력 확인
 ```kotlin
