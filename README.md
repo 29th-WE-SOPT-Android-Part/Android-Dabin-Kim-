@@ -1,9 +1,9 @@
-| SignIn | SignOut  |  
+| SignInActivity | SignOuActivityt  |  
 |:----------|:----------:|
 | <img src="https://user-images.githubusercontent.com/84564695/136655876-68f490b0-fd21-438c-aef9-3e363e9ea12e.gif" width="200" height="380"/> | <img src="https://user-images.githubusercontent.com/84564695/136656583-3aa640b4-7281-436b-bf82-274b4e2ed58e.gif" width="200" height="380"/> |
 *hint속성..화질이 안좋아서 안보임니다
 
-## SignIn
+## SignInActivity
 ### 데이터 입력 확인
 ```kotlin
    //모든 데이터가 입력되었는지 확인
@@ -55,7 +55,7 @@
             }
         }
 ```
-## SignOut
+## SignOutActivity
 
 ### 데이터 입력 확인
 ```kotlin
@@ -108,7 +108,7 @@
             }
         }
 ```
-## Home
+## HomeActivity
 
 ### 데이터 입력 확인
 ```kotlin
