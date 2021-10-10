@@ -95,8 +95,7 @@
 ```
 
 ### ✔***HomeActivity***
-
-  - #### 깃허브 페이지로 이동
+- #### 깃허브 페이지로 이동
 ```kotlin
   //깃허브 페이지로 이동
         binding.ivGithubIcon.setOnClickListener {
@@ -104,7 +103,16 @@
             startActivity(intent)
         }
 ```
+ - 명시적 Intent:
+앱 안에서 Activity나 서비스 같은 구성 요소를 시작할 때 사용하기 때문에 시작하고자 하는 액티비티 또는 서비스의 클래스 이름을 알고 있어야함
+val intent2 = Intent(this@Activity_1, Activity_2::class.java)
+ex)새로운 액티비티를 시작하거나 백그라운드에서 파일을 다운로드하기 위해 서비스를 시작하는 것
+위에서 Activity1->Activity2 간 Intent를 전달하는 예제 역시 명시적 Intent유형이었음
 
+ - 암시적 Intent:
+특정 구성 요소의 이름을 대지 않지만, 그 대신 수행할 일반적인 작업을 선언하여 다른 앱의 구성 요소가 이를 처리할 수 있도록 할 때 사용
+val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://m.naver.com"))
+ex)사용자에게 지도에 있는 한 위치를 표시하고자 하는 경우, 암시적 인텐트를 사용하여 해당 기능을 갖춘 다른 앱이 지정된 위치를 지도에 표시하도록 요청
 ### ✔***그외***
 - 모든 데이터가 입력되었을때만 로그인/회원가입 버튼 색깔 바뀌게하기
 ```kotlin
