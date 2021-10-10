@@ -179,3 +179,10 @@ class Databinding_image(val profile: String) {
  setOnClickListener를 람다식으로 간결하게 표현할 수 있는 이유: SAM(Single Abstract Method) 변환
  구현하는 인터페이스(View.OnClickListener)에 구현하는 메소드가 하나(onClick)뿐일때는 이를 람다식으로 변경할 수 있습니다. 
 
+## ✅배운 것
+- fade_in fade_out 애니메이션 구현하는 법 
+- 이미지에 gif 넣는 법
+- isNullOrEmpty()가 string타입이 아닌 editable타입에서도 사용할 수 있다는 것
+- startActivityForResult가 deprecated된 거 흐린 눈 하고 있었는데..ㅎㅎ registerForActivityResult로 데이터 리턴 받는 법을 배움
+- addTextChangedListener로 editText 입력값 실시간으로 이벤트 처리하는 법
+- Data Binding사용!!
