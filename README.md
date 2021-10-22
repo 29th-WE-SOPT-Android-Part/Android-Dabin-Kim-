@@ -226,19 +226,19 @@ binding.container.addItemDecoration(VerticalItemDecorator(activity, R.drawable.r
 그러나 정확히 어떤 아이템이 변경되었는지는 알 수 없기 때문에 변경된 아이템의 position을 알려줘야 한다.
 
    - notifyDataSetChanged
-아이템 변경(데이터가 업데이트 되었지만 위치는 변하지 않았을 때), 구조적 변경(아이템간에 삽입, 삭제, 이동이 일어났을 때)에 사용한다.
+:아이템 변경(데이터가 업데이트 되었지만 위치는 변하지 않았을 때), 구조적 변경(아이템간에 삽입, 삭제, 이동이 일어났을 때)에 사용한다.
 
   - notifyItemChanged / notifyItemChanged(int position, Object payload)
-position 위치의 아이템이 변경되었다고 파라미터를 통해 알려줄 수 있다.
+:position 위치의 아이템이 변경되었다고 파라미터를 통해 알려줄 수 있다.
 
   - notifyItemInserted / notifyItemInserted(int position)
-position 위치에 아이템이 추가되었다는 뜻이다.
+:position 위치에 아이템이 추가되었다는 뜻이다.
 
   - notifyItemMoved / notifyItemMoved(int fromPostion, int toPosition)
-인덱스 fromPosition 아이템이 toPosition으로 이동하였다.
+:인덱스 fromPosition 아이템이 toPosition으로 이동하였다.
 
   - notifyItemRangeChanged / notifyItemRangeChanged(int positionStart, int itemCount, Object payload)
-positionStart부터 itemCount개까지 범위에서 변경이 일어났다.
+:positionStart부터 itemCount개까지 범위에서 변경이 일어났다.
 
 
 - 문제점:notifyDataSetChanged는 리스트의 크기와 아이템이 둘 다 변경되는 경우에 사용하는 거라 리스트의 크기는 동일한데 아이템만 바뀌는 경우라든지 아이템의 순서만 살짝 바뀌는 경우 등등에는 굳이 notifyDataSetChanged를 사용할 필요가 없다. 
