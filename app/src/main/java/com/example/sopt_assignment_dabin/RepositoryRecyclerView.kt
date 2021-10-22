@@ -86,7 +86,7 @@ class RepositoryRecyclerViewAdapter() : RecyclerView.Adapter<RepositoryRecyclerV
         return RepositoryViewHolder(view)
     }
 
-    override fun getItemCount() = followerList.size //한줄로 리턴되는 함수 가독성~
+    override fun getItemCount() = followerList.size
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         holder.onBind(followerList[position])
