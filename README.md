@@ -2,7 +2,7 @@
 |:----------|:----------:|
 | <img src="https://user-images.githubusercontent.com/84564695/138446951-106bd619-6cc6-4ed2-b233-66684c8a8b50.gif" width="200" height="380"/> | <img src="https://user-images.githubusercontent.com/84564695/138447609-17856a66-0617-4068-831a-d49dcd337c10.gif" width="200" height="380"/> |
 
-## ✅Level1
+
 ### ✔***FollowerRecyclerView***
  - #### FollowerRecyclerViewAdapter
 ```kotlin
@@ -243,3 +243,10 @@ binding.container.addItemDecoration(VerticalItemDecorator(activity, R.drawable.r
 
 - 문제점:notifyDataSetChanged는 리스트의 크기와 아이템이 둘 다 변경되는 경우에 사용하는 거라 리스트의 크기는 동일한데 아이템만 바뀌는 경우라든지 아이템의 순서만 살짝 바뀌는 경우 등등에는 굳이 notifyDataSetChanged를 사용할 필요가 없다. 
    notifyDataSetChanged는 어느 상황에서나 사용 가능하지만 문제가 된다면, 성능이 비효율적
+   
+   
+## ✅배운점
+- 매번 Activity에서 RecyclerView를 사용했는데 Fragment에서 RecyclerView띄우는 걸 배웠다
+- Fragment는 context처리하는게 귀찮다는 점..ㅎㅎ
+- RecyclerView에서 아이템 스와이프하고 이동시키는 법
+- layoutManager를 항상 코드에서 조작했는데 xml에서도 가능한 걸 알았다
