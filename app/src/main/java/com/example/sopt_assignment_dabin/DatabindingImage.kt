@@ -4,10 +4,9 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
-class Databinding_image(val profile: String) {
+class DatabindingImage(val profile: String) {
 
     object MyBind {
-
         @JvmStatic
         @BindingAdapter("setImage")
         fun setImageUrl(view: ImageView, profile: String) {

@@ -12,28 +12,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SOPT_assignment_dabin">
         <activity
-            android:name=".RecyclerView_Activity"
+            android:name=".DetailActivity"
             android:exported="true" >
         </activity>
+        <activity
+            android:name=".RecyclerView_Activity"
+            android:exported="true"></activity>
         <activity
             android:name=".DataBindingActivity"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HomeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SignInActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

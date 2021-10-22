@@ -49,9 +49,11 @@
 
     <EditText
         android:id="@+id/et_name"
-        android:layout_width="322dp"
-        android:layout_height="50dp"
-        android:background="@drawable/login_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/login_pinkstroke_medium"
         android:hint="이름을 입력해주세요"
         android:padding="12dp"
         android:textColorHint="#B8B6B6"
@@ -76,9 +78,9 @@
 
     <EditText
         android:id="@+id/et_id"
-        android:layout_width="322dp"
-        android:layout_height="50dp"
-        android:background="@drawable/login_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_pinkstroke_medium"
         android:hint="아이디를 입력해주세요"
         android:padding="12dp"
         android:textColorHint="#B8B6B6"
@@ -104,10 +106,10 @@
 
     <EditText
         android:id="@+id/et_pass"
-        android:layout_width="322dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/login_edittext"
+        android:background="@drawable/login_pinkstroke_medium"
         android:hint="비밀번호를 입력해주세요"
         android:inputType="textPassword"
         android:padding="12dp"

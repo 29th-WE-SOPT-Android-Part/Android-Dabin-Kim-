@@ -3,6 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/follower_icon_small.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/follower_pink.xml" value="0.184375" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/follower_pinkstroke_m.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/follower_pinkstroke_medium.xml" value="0.184375" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/login_background.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/login_background2.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/login_edittext.xml" value="0.22685185185185186" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/login_pinkstroke_medium.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/repository_icon_small.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/repository_line_divider.xml" value="0.184375" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/drawable/repository_pinkstroke_medium.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/activity_data_binding.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/activity_home_main.xml" value="0.2" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/activity_recycler_view.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/activity_sign_in.xml" value="0.32450331125827814" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/activity_sign_up.xml" value="0.4" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/fragment_follower_recycler_view.xml" value="0.2" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/fragment_followerrecyclerview.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/fragment_repository_recycler_view.xml" value="0.4" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/item_follower_list.xml" value="0.264" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/item_followerfragment.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/item_repository_list.xml" value="0.264" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/item_sample_list.xml" value="0.264" />
+        <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/Android-Kim-Dabin/app/src/main/res/layout/text.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/SOPT_assignment_dabin/app/src/main/res/drawable/edittext_background.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/SOPT_assignment_dabin/app/src/main/res/drawable/login_background.xml" value="0.18518518518518517" />
         <entry key="..\:/Users/TFX5470H/AndroidStudioProjects/SOPT_assignment_dabin/app/src/main/res/drawable/login_background2.xml" value="0.15925925925925927" />
@@ -28,7 +55,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.176" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>
