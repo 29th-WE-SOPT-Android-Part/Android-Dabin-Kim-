@@ -103,7 +103,7 @@
 FollowerViewHolder에서 setOnClickListener를 구현해 데이터를 전달하긴했는데, 이미지도 position에 따라 같이 전달되는 방법 없을까.. 더 공부가 필요한 부분쓰,,
 
 ### ✔***ItemDecoration***
-   - #### FollowerRecyclerView
+   - #### VerticalItemDecorator 만들기
    ```kotlin
    import android.content.Context
 import android.graphics.Canvas
@@ -151,7 +151,7 @@ class VerticalItemDecorator(
 
    ```
 
-- #### FollowerRecyclerView
+- #### RepositoryRecyclerView에 VerticalItemDecorator연결
 ```kotlin
 binding.container.addItemDecoration(VerticalItemDecorator(activity, R.drawable.repository_line_divider, 60, 60, 30))
 ```
