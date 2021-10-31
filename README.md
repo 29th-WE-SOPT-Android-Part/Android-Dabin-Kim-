@@ -455,6 +455,192 @@ binding.container.addItemDecoration(VerticalItemDecorator(activity, R.drawable.r
 
  </details>
 
+ 
+ <details> 
+ <summary>week3</summary>
+ <!-- summary 아래 한칸 공백 두어야함 --> 
+ 
+| Level1,2 | Level3  |  
+|:----------|:----------:|
+| <img src="https://user-images.githubusercontent.com/84564695/139577909-72861c9a-8943-4eca-a893-229009a22d39.gif" width="200" height="380"/> | <img src="https://user-images.githubusercontent.com/84564695/139577974-02ec31e6-0542-4906-a27d-30d02626cfad.gif" width="200" height="380"/> |
+  
+## ✅Level1
+### ✔ ***EditText에 selector 활용***
+- #### SignIn/Up Activity
+```xml
+    ~selector 만들기~
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true"  android:drawable="@drawable/sign_input_pinkline"/>
+    <item android:drawable="@drawable/sign_input_grayline"/>
+</selector>
+```
+
+```xml
+      ~직접 도형 그리기~
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="1dp"
+                android:color="@color/hintInerGray" />
+            <solid android:color="@color/Gray6" />
+            <corners
+                android:bottomLeftRadius="5dp"
+                android:bottomRightRadius="5dp"
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp" />
+        </shape>
+
+    </item>
+</layer-list>
+```
+  
+### ✔ ***버튼에 selector 활용***
+- #### Home
+```xml
+  ~버튼 택스트 isSelected에 따른 색 변경하는 selector파일~
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true" android:color="@color/white" />
+    <item android:state_selected="false" android:color="@color/Gray1" />
+
+</selector>
+ ```
+ ```kotlin
+  ~isSelected에 따른 분기 처리~
+        binding.bvFollower.setOnClickListener {
+            if (binding.bvRepository.isSelected == true) {
+                binding.bvRepository.isSelected = false
+                binding.bvFollower.isSelected = true
+                childFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.home_container, followerRecyclerViewFragment)
+                    .commit()
+            } else {
+                childFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.home_container, followerRecyclerViewFragment)
+                    .commit()
+            }
+        }
+
+        binding.bvRepository.setOnClickListener {
+            if (binding.bvFollower.isSelected == true) {
+                binding.bvFollower.isSelected = false
+                binding.bvRepository.isSelected = true
+                childFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.home_container, repositoryRecyclerViewFragment)
+                    .commit()
+            } else {
+                childFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.home_container, repositoryRecyclerViewFragment)
+                    .commit()
+            }
+        }
+    }
+  ```
+## ✅Level2
+### ✔ ***ViewPager2 중첩 스크롤 문제 해결***
+- #### HomeFragment : 구글에서 제공하는 [NestedScrollableHost](https://github.com/android/views-widgets-samples/blob/master/ViewPager2/app/src/main/java/androidx/viewpager2/integration/testapp/NestedScrollableHost.kt) 를 사용
+  ```xml
+      <com.example.sopt_assignment_dabin.ViewPager_Fragment.NestedScrollableHost
+        android:id="@+id/nestedScrollableHost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tl_home">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tabIndicatorGravity="top" />
+    </com.example.sopt_assignment_dabin.ViewPager_Fragment.NestedScrollableHost>
+  ```
+
+  
+### ✔ ***아이템에 이미지 url을 활용해 Glide로 서로 다른 이미지를 띄우기***
+- #### FollowerListData : image 변수 추가
+```kotlin
+  data class FollowerListData(
+    val name:String,
+    val story:String,
+    val image:String)
+```
+  
+- #### FollowerRecyclerViewAdapter: FollowerRecyclerViewAdapter에서 이미지 띄우는 Glide사용
+  
+```kotlin
+  fun onBind(data: FollowerListData) {
+            view.tvName.text = data.name
+            view.tvStory.text = data.story
+            Glide.with(itemView.context).load(data.image).circleCrop().into(view.ivFollowerImage)
+```
+
+## ✅Level3
+### ✔ ***갤러리에서 받아온 이미지(uri)를 Glide로 화면에 띄우기***
+- #### CameraBackgroundViewpager: isGranted인 경우가 true인지 false인지 분기 처리 후 권한허용이라면 startProcess() 실행 후 CallBack으로 이미지 띄우기
+```kotlin
+      private fun checkPermission() {
+        val cameraPermission = ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (cameraPermission == PackageManager.PERMISSION_GRANTED) {
+            //프로그램 진행
+            startProcess()
+        } else {
+            //권한요청
+            requestPermission()
+        }
+    }
+  
+      private fun requestPermission() {
+        permissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    }
+```
+  
+```kotlin
+   private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+        when (isGranted) {
+            true -> startProcess()
+            false -> Toast.makeText(getActivity(), "갤러리 권한을 허용해주세요.", Toast.LENGTH_SHORT).show()
+        }
+    }
+  
+    private fun startProcess() {
+        val intent = Intent()
+        intent.setType("image/*")
+        intent.setAction(Intent.ACTION_GET_CONTENT)
+        getResultText.launch(intent)
+    }
+
+    var getResultText = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+    { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            val uri = intent?.data
+            Glide.with(this).load(uri).into(binding.ivCamera)
+        }
+        //else if (result.resultCode == Activity.RESULT_CANCELED) {} =>Activity.RESULT_CANCELED일때 처리코드가 필요하다면
+    }
+```
+
+## ✅배운 것
+- 디자인 적용 처음해보는데 너무 신기하고..조금 귀찮고...재밌었다
+- TabLayout 커스터마이징 하는법
+- ViewPager안에 ViewPager있으면 중첩이 안된다는 것
+- Fragment안에 Fragment넣기는 Activity에 종속될때랑 코드가 달라짐
+- 권한처리에 대해 배웠는데 어려워서 더 배워야 할 듯  
+</details>
 
 ![github_김의진_ver1-10](https://user-images.githubusercontent.com/70698151/135753837-7997f154-ca2b-4b7a-bf51-a6fe3f29947f.png)
 
