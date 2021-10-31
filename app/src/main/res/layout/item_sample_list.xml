@@ -29,7 +29,7 @@
         app:layout_constraintStart_toEndOf="@+id/iv_github"
         app:layout_constraintTop_toTopOf="@+id/iv_github"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="김다빈" />  //미리보기 역할
+        tools:text="김다빈" />
 
     <TextView
         android:id="@+id/tv_story"

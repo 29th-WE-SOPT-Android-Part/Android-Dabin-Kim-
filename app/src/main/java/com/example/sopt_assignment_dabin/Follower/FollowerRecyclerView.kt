@@ -33,7 +33,7 @@ class FollowerRecyclerView : Fragment() {
         _binding = null
     }
 
-    fun initFollowerAdapter() {
+    private fun initFollowerAdapter() {
         binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.recyclerview_line_divider, 0, 0, 0))
         followerAdapter = FollowerRecyclerViewAdapter()
         binding.container.adapter = followerAdapter

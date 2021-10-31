@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="안드로이드 과제 레파지토리" />
-    layout_width를 0dp로 하면 안된다
+<!--    layout_width를 0dp로 하면 안된다-->
 
     <TextView
         android:id="@+id/tv_story"

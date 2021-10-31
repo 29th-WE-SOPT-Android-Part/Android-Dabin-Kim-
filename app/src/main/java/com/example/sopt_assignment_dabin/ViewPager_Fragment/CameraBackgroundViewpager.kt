@@ -26,7 +26,8 @@ class CameraBackgroundViewpager : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCameraBackgroundViewpagerBinding.inflate(layoutInflater, container, false)
-        clickButton()
+
+        clickGallery()
         return binding.root
     }
 
@@ -74,7 +75,7 @@ class CameraBackgroundViewpager : Fragment() {
         }
     }
 
-    private fun clickButton() {
+    private fun clickGallery(){
         binding.bvCamera.setOnClickListener {
             checkPermission()
         }

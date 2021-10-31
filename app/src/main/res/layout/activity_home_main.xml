@@ -19,16 +19,14 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bn_home"
-        android:theme="@style/Widget.BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/Widget.BottomNavigationView"
         app:itemIconTint="@color/bottom_color_selector"
         app:itemTextColor="@color/bottom_color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/home_bottomnavigation_menulist" />
-    app:labelVisibilityMode="unlabeled" 타이틀 지우기
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

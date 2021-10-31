@@ -7,6 +7,6 @@ import com.bumptech.glide.util.Util
 
 class BackgroundViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     var fragments = mutableListOf<Fragment>()
-    override fun createFragment(position: Int): Fragment = fragments[position] as Fragment
+    override fun createFragment(position: Int): Fragment = fragments[position]
     override fun getItemCount(): Int = fragments.size
 }

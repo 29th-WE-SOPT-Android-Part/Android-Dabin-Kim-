@@ -7,9 +7,6 @@
     android:background="#dfdfdf"
     tools:context=".ViewPager_Fragment.FollowerViewpager">
 
-
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
