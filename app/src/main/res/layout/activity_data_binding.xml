@@ -11,7 +11,7 @@
 
         <variable
             name="face"
-            type="com.example.sopt_assignment_dabin.DatabindingImage" />
+            type="com.example.sopt_assignment_dabin.HomeActivityDatabindingImage" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeActivity">
+        tools:context=".Home.HomeActivity">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -86,13 +86,6 @@
             app:layout_constraintStart_toEndOf="@+id/tv_mbti1"
             app:layout_constraintTop_toBottomOf="@+id/tv_age2" />
 
-
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_introduce"

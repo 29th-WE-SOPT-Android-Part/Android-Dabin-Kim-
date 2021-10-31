@@ -3,6 +3,8 @@
     package="com.example.sopt_assignment_dabin">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -11,33 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SOPT_assignment_dabin">
+
+        <activity android:name=".Follower.DetailActivity" />
+        <activity android:name=".HomeActivityDataBinding" />
         <activity
-            android:name=".DetailActivity"
-            android:exported="true" >
-        </activity>
-        <activity
-            android:name=".RecyclerView_Activity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".DataBindingActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="true"
+            android:name=".Sign.SignUpActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Home.HomeActivity" />
         <activity
-            android:name=".HomeActivity"
-            android:exported="true">
+            android:name=".Sign.SignInActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".SignInActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pinkpop"
+    tools:context=".ViewPager_Fragment.ProfileBackgroundViewpager">
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_preference"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="21dp"
+        android:src="@drawable/ic_profileviewpager_preferences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_preference2"
+        android:layout_width="8dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_profileviewpager_preferences2"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_preference"
+        app:layout_constraintEnd_toEndOf="@+id/iv_preference"
+        app:layout_constraintStart_toStartOf="@+id/iv_preference"
+        app:layout_constraintTop_toTopOf="@+id/iv_preference" />
+
+    <TextView
+        android:id="@+id/tv_name_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="Dabin Kim"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
+
+    <TextView
+        android:id="@+id/tv_id_profile"
+        android:layout_width="63dp"
+        android:layout_height="21dp"
+        android:fontFamily="@font/notosanskr_regular"
+        android:text="dabin0318"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tv_name_profile"
+        app:layout_constraintStart_toStartOf="@+id/tv_name_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_profile" />
+
+    <TextView
+        android:id="@+id/tv_introduce_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/notosanskr_medium"
+        android:text="초보 개발자 김다빈"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_id_profile"
+        app:layout_constraintStart_toStartOf="@+id/tv_id_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_id_profile" />
+
+    <TextView
+        android:layout_width="2dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="3dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_introduce_profile"
+        app:layout_constraintEnd_toStartOf="@+id/tv_introduce_profile"
+        app:layout_constraintTop_toTopOf="@+id/tv_introduce_profile" />
+
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_introduce_profile" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bv_follower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/home_input_selector"
+        android:fontFamily="@font/notosanskr_regular"
+        android:paddingStart="45dp"
+        android:paddingTop="13dp"
+        android:paddingEnd="45dp"
+        android:paddingBottom="13dp"
+        android:text="팔로워 목록"
+        android:textColor="@drawable/home_inputcolor_selector"
+        android:textFontWeight="400"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/home_container"
+        app:layout_constraintEnd_toStartOf="@+id/bv_repository"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bv_repository"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="13dp"
+        android:background="@drawable/home_input_selector"
+        android:fontFamily="@font/notosanskr_regular"
+        android:paddingStart="35dp"
+        android:paddingTop="13dp"
+        android:paddingEnd="35dp"
+        android:paddingBottom="13dp"
+        android:text="레파지토리 목록"
+        android:textColor="@drawable/home_inputcolor_selector"
+        android:textColorHint="@color/Gray1"
+        android:textFontWeight="400"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/home_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bv_follower"
+        app:layout_constraintTop_toTopOf="@+id/iv_background" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/home_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bv_repository" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,10 +13,40 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
-
+        <item name="android:includeFontPadding">false</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-<!--        theme안보이게 -->
+        <!--theme안보이게 -->
 
     </style>
+
+    <!--bottomnavigation폰트 적용-->
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/notosanskr_medium</item>
+    </style>
+
+    <!--tablayout-->
+    <style name="tab_text_style">
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/notosanskr_medium</item>
+    </style>
+
+    <style name="tab_style">
+        <item name="tabIndicatorColor">@color/sopt</item>
+        선택됐을때 밑줄
+        <item name="tabIndicatorHeight">3dp</item>
+        밑줄 굵기
+        <item name="tabTextAppearance">@style/tab_text_style</item>
+        tab_text_style 적용
+        <item name="tabSelectedTextColor">@color/sopt</item>
+        선택됐을때 글씨 색
+        <item name="tabTextColor">@color/hintGray</item>
+        선택안됐을때 글씨색
+        <item name="tabMode">fixed</item>
+        <item name="tabGravity">fill</item>
+        <!--        <item name="android:background">@drawable/custom_inactive_tab_indicator</item>-->
+
+
+    </style>
+
 </resources>
