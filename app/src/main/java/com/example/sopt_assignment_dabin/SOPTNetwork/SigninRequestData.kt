@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.SOPT_Network
+package com.example.sopt_assignment_dabin.SOPTNetwork
 
 data class SigninRequestData(
     val email:String,

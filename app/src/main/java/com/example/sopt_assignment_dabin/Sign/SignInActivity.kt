@@ -38,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
 
             override fun onTextChanged(inputChar: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (isEtIdEmpty() != true && isEtPassword() != true && inputChar.toString() != "") {
-                    binding.bvLogin.setBackgroundResource(R.drawable.login_background2)
+                    binding.bvLogin.setBackgroundResource(R.drawable.rectangle_sopt_radius_8)
                 }
             }
         })

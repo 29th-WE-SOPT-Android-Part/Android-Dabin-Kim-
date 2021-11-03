@@ -1,6 +1,6 @@
-package com.example.sopt_assignment_dabin.SOPT_Network
+package com.example.sopt_assignment_dabin.SOPTNetwork
 
-data class SiginupResponseData(
+data class SigninResponseData(
     val status: Int,
     val success: Boolean,
     val message: String,
@@ -8,7 +8,6 @@ data class SiginupResponseData(
     data class Data(
         val id: Int,
         val name: String,
-        val password: Int,
         val email: String
     )
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewPager_Fragment.HomeBackgroundViewPager">
+    tools:context=".ViewPagerFragment.HomeFragment">
 
     <ImageView
         android:id="@+id/iv_github_home"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_github_home" />
 
 
-    <com.example.sopt_assignment_dabin.ViewPager_Fragment.NestedScrollableHost
+    <com.example.sopt_assignment_dabin.ViewPagerFragment.NestedScrollableHost
         android:id="@+id/nestedScrollableHost"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:tabIndicatorGravity="top" />
-    </com.example.sopt_assignment_dabin.ViewPager_Fragment.NestedScrollableHost>
+    </com.example.sopt_assignment_dabin.ViewPagerFragment.NestedScrollableHost>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

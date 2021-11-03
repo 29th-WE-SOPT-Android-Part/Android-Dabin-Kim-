@@ -1,18 +1,16 @@
-package com.example.sopt_assignment_dabin.ViewPager_Fragment
+package com.example.sopt_assignment_dabin.ViewPagerFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.viewpager2.widget.ViewPager2
-import com.example.sopt_assignment_dabin.R
-import com.example.sopt_assignment_dabin.ViewPager_Adapter.HomeViewPagerAdapter
+import com.example.sopt_assignment_dabin.ViewPagerAdapter.HomeViewPagerAdapter
 import com.example.sopt_assignment_dabin.databinding.FragmentHomeBackgroundViewPagerBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class HomeBackgroundViewPager : Fragment() {
+class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBackgroundViewPagerBinding? = null
     private val binding get() = _binding!!
     private lateinit var homeViewPagerAdapter: HomeViewPagerAdapter
@@ -33,7 +31,7 @@ class HomeBackgroundViewPager : Fragment() {
     }
 
     private fun initAdapter() {
-        val fragmentList = listOf(FollowingViewPager(), FollowerViewpager())
+        val fragmentList = listOf(FollowingFragment(), FollowerFragment())
         homeViewPagerAdapter = HomeViewPagerAdapter(this)
         homeViewPagerAdapter.fragments.addAll(fragmentList)
         binding.vpHome.adapter = homeViewPagerAdapter

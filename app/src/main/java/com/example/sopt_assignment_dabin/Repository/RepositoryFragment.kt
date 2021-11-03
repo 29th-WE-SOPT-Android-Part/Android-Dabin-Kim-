@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sopt_assignment_dabin.Repository.RepositoryListData
-import com.example.sopt_assignment_dabin.Repository.RepositoryRecyclerViewAdapter
+import com.example.sopt_assignment_dabin.Repository.RepositoryAdapter
 import com.example.sopt_assignment_dabin.databinding.FragmentRepositoryRecyclerViewBinding
 
-class RepositoryRecyclerView : Fragment() {
+class RepositoryFragment : Fragment() {
     private var _binding: FragmentRepositoryRecyclerViewBinding? = null
     private val binding get() = _binding!!
 
@@ -35,10 +35,10 @@ class RepositoryRecyclerView : Fragment() {
     }
 
     fun initRepositoryAdapter() {
-        val repositoryAdapter = RepositoryRecyclerViewAdapter()
+        val repositoryAdapter = RepositoryAdapter()
         binding.container.adapter = repositoryAdapter
         binding.container.layoutManager = LinearLayoutManager(requireActivity())  //activity, RecyclerView.VERTICAL, false
-        binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.recyclerview_line_divider, 0, 0, 0))
+        binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.rectangle_dividegray_width_1, 0, 0, 0))
         ItemTouchHelper(ItemTouchHelperCallback(repositoryAdapter)).attachToRecyclerView(binding.container)
 
         repositoryAdapter.repositoryList.addAll(

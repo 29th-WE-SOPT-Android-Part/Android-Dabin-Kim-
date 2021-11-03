@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sopt_assignment_dabin.ItemTouchHelperListener
 import com.example.sopt_assignment_dabin.databinding.ItemRepositoryListBinding
 
-class RepositoryRecyclerViewAdapter() : RecyclerView.Adapter<RepositoryRecyclerViewAdapter.RepositoryViewHolder>(), ItemTouchHelperListener {
+class RepositoryAdapter() : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>(), ItemTouchHelperListener {
     val repositoryList = mutableListOf<RepositoryListData>()
 
     override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {

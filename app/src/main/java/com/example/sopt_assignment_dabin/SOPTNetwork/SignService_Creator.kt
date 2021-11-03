@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.SOPT_Network
+package com.example.sopt_assignment_dabin.SOPTNetwork
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

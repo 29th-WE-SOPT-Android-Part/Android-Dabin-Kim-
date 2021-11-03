@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.ViewPager_Fragment
+package com.example.sopt_assignment_dabin.ViewPagerFragment
 
 import android.content.Context
 import android.util.AttributeSet

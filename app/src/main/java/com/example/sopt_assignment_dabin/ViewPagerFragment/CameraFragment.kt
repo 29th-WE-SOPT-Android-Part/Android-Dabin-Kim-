@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.ViewPager_Fragment
+package com.example.sopt_assignment_dabin.ViewPagerFragment
 
 import android.Manifest
 import android.app.Activity
@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -17,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.sopt_assignment_dabin.databinding.FragmentCameraBackgroundViewpagerBinding
 
 
-class CameraBackgroundViewpager : Fragment() {
+class CameraFragment : Fragment() {
     private var _binding: FragmentCameraBackgroundViewpagerBinding? = null
     private val binding get() = _binding!!
 

@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.Github_Network
+package com.example.sopt_assignment_dabin.GithubNetwork
 
 import com.google.gson.annotations.SerializedName
 

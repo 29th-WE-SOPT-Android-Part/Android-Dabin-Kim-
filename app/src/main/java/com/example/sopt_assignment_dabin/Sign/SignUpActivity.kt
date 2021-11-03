@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (isEtNameEmpty() != true && isEtIdEmpty() != true && isEtPassword() != true && p0.toString() != "") {
-                    binding.bvLogin.setBackgroundResource(R.drawable.login_background2)
+                    binding.bvLogin.setBackgroundResource(R.drawable.rectangle_sopt_radius_8)
                 }
             }
         })

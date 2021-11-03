@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sopt_assignment_dabin.R
-import com.example.sopt_assignment_dabin.ViewPager_Adapter.BackgroundViewPagerAdapter
-import com.example.sopt_assignment_dabin.ViewPager_Fragment.CameraBackgroundViewpager
-import com.example.sopt_assignment_dabin.ViewPager_Fragment.HomeBackgroundViewPager
-import com.example.sopt_assignment_dabin.ViewPager_Fragment.ProfileBackgroundViewpager
+import com.example.sopt_assignment_dabin.ViewPagerAdapter.BackgroundViewPagerAdapter
+import com.example.sopt_assignment_dabin.ViewPagerFragment.CameraFragment
+import com.example.sopt_assignment_dabin.ViewPagerFragment.HomeFragment
+import com.example.sopt_assignment_dabin.ViewPagerFragment.ProfileFragment
 import com.example.sopt_assignment_dabin.databinding.ActivityHomeMainBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -51,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
 
     //viewPager연결
     private fun initAdapter() {
-        val fragmentList = listOf(ProfileBackgroundViewpager(), HomeBackgroundViewPager(), CameraBackgroundViewpager())
+        val fragmentList = listOf(ProfileFragment(), HomeFragment(), CameraFragment())
         viewPagerAdater = BackgroundViewPagerAdapter(this)
         viewPagerAdater.fragments.addAll(fragmentList)
         binding.vpHome.adapter = viewPagerAdater

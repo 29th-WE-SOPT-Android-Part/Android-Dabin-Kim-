@@ -2,20 +2,17 @@ package com.example.sopt_assignment_dabin
 
 
 import HorizontalItemDecorator
-import android.content.Intent
-import android.icu.text.IDNA
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.sopt_assignment_dabin.Follower.DetailActivity
 import com.example.sopt_assignment_dabin.Follower.FollowerListData
 import com.example.sopt_assignment_dabin.databinding.FragmentFollowerRecyclerViewBinding
-import com.example.sopt_assignment_dabin.Follower.FollowerRecyclerViewAdapter
+import com.example.sopt_assignment_dabin.Follower.FollowerAdapter
 
-class FollowerRecyclerView : Fragment() {
-    private lateinit var followerAdapter: FollowerRecyclerViewAdapter
+class FolloweFragment : Fragment() {
+    private lateinit var followerAdapter: FollowerAdapter
     private var _binding: FragmentFollowerRecyclerViewBinding? = null
     private val binding get() = _binding!!
 
@@ -34,8 +31,8 @@ class FollowerRecyclerView : Fragment() {
     }
 
     private fun initFollowerAdapter() {
-        binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.recyclerview_line_divider, 0, 0, 0))
-        followerAdapter = FollowerRecyclerViewAdapter()
+        binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.rectangle_dividegray_width_1, 0, 0, 0))
+        followerAdapter = FollowerAdapter()
         binding.container.adapter = followerAdapter
 
         val follower1 = "https://images.chosun.com/resizer/Uq7kIYPcL-jTdlvCsPtXZGS7bx0=/568x313/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/P7B24KRS2XSGACGGMJLJDDQIHE.jpg"

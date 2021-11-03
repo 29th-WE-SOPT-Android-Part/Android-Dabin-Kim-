@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.ViewPager_Fragment
+package com.example.sopt_assignment_dabin.ViewPagerFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.sopt_assignment_dabin.FollowerRecyclerView
+import com.example.sopt_assignment_dabin.FolloweFragment
 import com.example.sopt_assignment_dabin.R
-import com.example.sopt_assignment_dabin.RepositoryRecyclerView
+import com.example.sopt_assignment_dabin.RepositoryFragment
 import com.example.sopt_assignment_dabin.databinding.FragmentProfileBackgroundViewpagerBinding
 
 
-class ProfileBackgroundViewpager : Fragment() {
+class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBackgroundViewpagerBinding? = null
     private val binding get() = _binding!!
 
@@ -33,8 +33,8 @@ class ProfileBackgroundViewpager : Fragment() {
 
     private fun transactionEvent() {
         binding.bvFollower.isSelected = true
-        val repositoryRecyclerViewFragment = RepositoryRecyclerView()
-        val followerRecyclerViewFragment = FollowerRecyclerView()
+        val repositoryRecyclerViewFragment = RepositoryFragment()
+        val followerRecyclerViewFragment = FolloweFragment()
         childFragmentManager
             .beginTransaction()
             .add(R.id.home_container, followerRecyclerViewFragment)
@@ -75,7 +75,7 @@ class ProfileBackgroundViewpager : Fragment() {
 
     private fun drawProfileImage() {
         Glide.with(this)
-            .load(R.drawable.profile_image)
+            .load(R.drawable.img_home_user)
             .circleCrop()
             .into(binding.ivProfile)
     }
