@@ -14,7 +14,8 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:spanCount="2"
         tools:itemCount="4"
-        tools:listitem="@layout/item_follower_list" />
+        tools:listitem="@layout/item_follower_list"
+        android:layout_marginBottom="56dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,25 +6,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sopt_assignment_dabin.ItemTouchHelperListener
 import com.example.sopt_assignment_dabin.databinding.ItemRepositoryListBinding
 
-class RepositoryAdapter() : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>(), ItemTouchHelperListener {
-    val repositoryList = mutableListOf<RepositoryListData>()
-
-    override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
-        repositoryList.removeAt(fromPosition)
-        repositoryList.add(toPosition, repositoryList[fromPosition])
-        notifyItemMoved(fromPosition, toPosition)
-        return true
-    }
-
-    override fun onItemSwipe(position: Int) {
-        repositoryList.removeAt(position)
-        notifyItemRemoved(position)
-    }
+class RepositoryAdapter(val repositoryList: List<RepositoryResponseData.Data>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>(){
+//    override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
+//        repositoryList.removeAt(fromPosition)
+//        repositoryList.add(toPosition, repositoryList[fromPosition])
+//        notifyItemMoved(fromPosition, toPosition)
+//        return true
+//    }
+//
+//    override fun onItemSwipe(position: Int) {
+//        repositoryList.removeAt(position)
+//        notifyItemRemoved(position)
+//    }
 
     class RepositoryViewHolder(private val view: ItemRepositoryListBinding) : RecyclerView.ViewHolder(view.root) {
-        fun onBind(data: RepositoryListData) {
-            view.tvName.text = data.name
-            view.tvStory.text = data.story
+        fun onBind(data: RepositoryResponseData.Data) {
+            view.tvName.text = data.repoName
+            view.tvStory.text = data.reposUrl
         }
     }
 

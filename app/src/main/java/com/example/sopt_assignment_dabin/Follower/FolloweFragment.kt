@@ -3,26 +3,37 @@ package com.example.sopt_assignment_dabin
 
 import HorizontalItemDecorator
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.sopt_assignment_dabin.Follower.FollowerListData
+import com.example.sopt_assignment_dabin.Follower.FollowerResponseData
 import com.example.sopt_assignment_dabin.databinding.FragmentFollowerRecyclerViewBinding
 import com.example.sopt_assignment_dabin.Follower.FollowerAdapter
+import com.example.sopt_assignment_dabin.Follower.FollowerResponseDataBio
+import com.example.sopt_assignment_dabin.GithubNetwork.GithubServiceCreator
+import com.example.sopt_assignment_dabin.Repository.RepositoryResponseData
+import retrofit2.Response
+import retrofit2.http.Body
 
 class FolloweFragment : Fragment() {
     private lateinit var followerAdapter: FollowerAdapter
     private var _binding: FragmentFollowerRecyclerViewBinding? = null
     private val binding get() = _binding!!
+    lateinit var followerList: List<FollowerResponseData>
+    lateinit var followerBio: MutableList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFollowerRecyclerViewBinding.inflate(layoutInflater, container, false)
-        initFollowerAdapter()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initNetwork()
     }
 
     override fun onDestroy() {
@@ -30,31 +41,32 @@ class FolloweFragment : Fragment() {
         _binding = null
     }
 
-    private fun initFollowerAdapter() {
+    private fun initFollowerAdapter(followerList: List<FollowerResponseData>) {
         binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.rectangle_dividegray_width_1, 0, 0, 0))
-        followerAdapter = FollowerAdapter()
+        followerAdapter = FollowerAdapter(followerList)
         binding.container.adapter = followerAdapter
-
-        val follower1 = "https://images.chosun.com/resizer/Uq7kIYPcL-jTdlvCsPtXZGS7bx0=/568x313/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/P7B24KRS2XSGACGGMJLJDDQIHE.jpg"
-        val follower2 = "https://news.nateimg.co.kr/orgImg/hi/2021/09/06/d2c70b2c-27db-4073-97c6-7956d353918b.jpg"
-        val follower3 = "https://cdn.entermedia.co.kr/news/photo/202108/27226_50216_3140.jpg"
-        val follower4 = "https://images.chosun.com/resizer/Uq7kIYPcL-jTdlvCsPtXZGS7bx0=/568x313/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/P7B24KRS2XSGACGGMJLJDDQIHE.jpg"
-        val follower5 = "https://news.nateimg.co.kr/orgImg/hi/2021/09/06/d2c70b2c-27db-4073-97c6-7956d353918b.jpg"
-        val follower6 = "https://cdn.entermedia.co.kr/news/photo/202108/27226_50216_3140.jpg"
-        followerAdapter.followerList.addAll(
-            listOf(
-                FollowerListData("몬익화", "반갑습니다", follower1),
-                FollowerListData("리정", "오하이오", follower2),
-                FollowerListData("아이키", "111111하이", follower3),
-                FollowerListData("박지성", "22222하이", follower4),
-                FollowerListData("김다빈", "3333하이", follower5),
-                FollowerListData("김다빈", "4444하이", follower6),
-                FollowerListData("박지성", "22222하이", follower4),
-                FollowerListData("김다빈", "3333하이", follower5),
-                FollowerListData("김다빈", "4444하이", follower6)
-            )
-        )
         followerAdapter.notifyDataSetChanged()
+    }
+
+
+    private fun initNetwork() {
+
+        val callFollower: retrofit2.Call<List<FollowerResponseData>> = GithubServiceCreator.githubService.githubFollowerGet("DroidNinja")
+
+        callFollower.enqueue(object : retrofit2.Callback<List<FollowerResponseData>> {
+            override fun onResponse(call: retrofit2.Call<List<FollowerResponseData>>, response: Response<List<FollowerResponseData>>) {
+                if (response.isSuccessful) {
+                    followerList = response?.body() ?: listOf()
+                     initFollowerAdapter(followerList)
+                } else {
+                    //
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<List<FollowerResponseData>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 }
 

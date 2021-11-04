@@ -1,5 +1,7 @@
 package com.example.sopt_assignment_dabin.GithubNetwork
 
+import com.example.sopt_assignment_dabin.SOPTNetwork.SigninService
+import com.example.sopt_assignment_dabin.SOPTNetwork.SignupService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,5 +12,5 @@ object GithubServiceCreator {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service:GithubService= retrofit.create(GithubService::class.java)
+    val githubService: GithubService = retrofit.create(GithubService::class.java)
 }

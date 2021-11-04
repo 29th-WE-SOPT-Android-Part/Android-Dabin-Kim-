@@ -6,18 +6,28 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sopt_assignment_dabin.Home.HomeActivity
 import com.example.sopt_assignment_dabin.R
+import com.example.sopt_assignment_dabin.SOPTNetwork.SignServiceCreator
+import com.example.sopt_assignment_dabin.Sign.data.SigninRequestData
+import com.example.sopt_assignment_dabin.Sign.data.SigninResponseData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignInBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
-    private lateinit var getResultText: ActivityResultLauncher<Intent>  //회원가입 데이터 리턴받을 때 사용
-    private lateinit var binding: ActivitySignInBinding  //해당 class에서만 사용되니 private으로 선언하는 습관
+    private lateinit var getResultText:ActivityResultLauncher<Intent>//회원가입 데이터 리턴받을 때 사용
+    private lateinit var binding: ActivitySignInBinding //해당 class에서만 사용되니 private으로 선언하는 습관
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +64,7 @@ class SignInActivity : AppCompatActivity() {
         }
 
         //회원가입 데이터 받아오기
-        getResultText = registerForActivityResult(
+         getResultText = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -92,11 +102,12 @@ class SignInActivity : AppCompatActivity() {
 
     private fun clickLogin() {
         if (isAllEditTextEmpty()) {  //(isAllEditTextEmpty() == true) 와 같은..!
-            Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "모든 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            initNetwork()
+// Toast.makeText(this, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
+// val intent = Intent(this, HomeActivity::class.java)
+// startActivity(intent)
         }
     }
 
@@ -104,5 +115,28 @@ class SignInActivity : AppCompatActivity() {
         val intent = Intent(this, SignUpActivity::class.java)
         getResultText.launch(intent)
     }
-}
 
+    private fun initNetwork() {
+        val requestData = SigninRequestData(
+            email = binding.etIdIn.text.toString(),
+            password = binding.etPassIn.text.toString()
+        )
+        val call: Call<SigninResponseData.Data> = SignServiceCreator.signinService.signinLogin(requestData)
+        call.enqueue(object : Callback<SigninResponseData.Data> {
+            override fun onResponse(call: Call<SigninResponseData.Data>, response: Response<SigninResponseData.Data>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@SignInActivity, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@SignInActivity, "등록되지 않은 사용자 입니다", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<SigninResponseData.Data>, t: Throwable) {
+                Log.d("Network", "error:$t")
+            }
+        })
+
+    }
+}

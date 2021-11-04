@@ -14,7 +14,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeMainBinding
     private lateinit var viewPagerAdater: BackgroundViewPagerAdapter
 
-    private companion object {
+    companion object {
         const val FIRST_FRAGMENT = 0
         const val SECOND_FRAGMENT = 1
         const val THIRD_FRAGMENT = 2
@@ -40,12 +40,20 @@ class HomeActivity : AppCompatActivity() {
         })
 
         binding.bnHome.setOnItemSelectedListener {
-            binding.vpHome.currentItem = when (it.itemId) {
-                R.id.bottom_profile -> FIRST_FRAGMENT
-                binding.vpHome.currentItem -> SECOND_FRAGMENT
-                else -> THIRD_FRAGMENT
+            when (it.itemId) {
+                R.id.bottom_profile -> {
+                    binding.vpHome.currentItem = FIRST_FRAGMENT
+                    return@setOnItemSelectedListener true
+                }
+                R.id.bottom_home -> {
+                    binding.vpHome.currentItem = SECOND_FRAGMENT
+                    return@setOnItemSelectedListener true
+                }
+                else -> {
+                    binding.vpHome.currentItem = THIRD_FRAGMENT
+                    return@setOnItemSelectedListener true
+                }
             }
-            return@setOnItemSelectedListener true
         }
     }
 
@@ -57,4 +65,3 @@ class HomeActivity : AppCompatActivity() {
         binding.vpHome.adapter = viewPagerAdater
     }
 }
-

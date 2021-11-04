@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.sopt_assignment_dabin.Repository.RepositoryListData
+import com.example.sopt_assignment_dabin.GithubNetwork.GithubServiceCreator
+import com.example.sopt_assignment_dabin.Repository.RepositoryResponseData
 import com.example.sopt_assignment_dabin.Repository.RepositoryAdapter
 import com.example.sopt_assignment_dabin.databinding.FragmentRepositoryRecyclerViewBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RepositoryFragment : Fragment() {
     private var _binding: FragmentRepositoryRecyclerViewBinding? = null
@@ -25,8 +29,10 @@ class RepositoryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initNetwork()
         super.onViewCreated(view, savedInstanceState)
-        initRepositoryAdapter()
+
+        Toast.makeText(requireContext(),"",Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
@@ -34,25 +40,33 @@ class RepositoryFragment : Fragment() {
         _binding = null
     }
 
-    fun initRepositoryAdapter() {
-        val repositoryAdapter = RepositoryAdapter()
+    fun initRepositoryAdapter(list: List<RepositoryResponseData.Data>) {
+        val repositoryAdapter = RepositoryAdapter(list)
         binding.container.adapter = repositoryAdapter
         binding.container.layoutManager = LinearLayoutManager(requireActivity())  //activity, RecyclerView.VERTICAL, false
         binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.rectangle_dividegray_width_1, 0, 0, 0))
-        ItemTouchHelper(ItemTouchHelperCallback(repositoryAdapter)).attachToRecyclerView(binding.container)
-
-        repositoryAdapter.repositoryList.addAll(
-            listOf(
-                RepositoryListData("안드로이드 레파지토리", "하이"),
-                RepositoryListData("웹 레파지토리", "하이"),
-                RepositoryListData("아요 레파지토리", "하이"),
-                RepositoryListData("엥 레파지토리", "하이"),
-                RepositoryListData("서버 레파지토리", "하이"),
-                RepositoryListData("배고흔 레파지토리", "하이"),
-                RepositoryListData("얼랄라 레파지토리", "하이")
-            )
-        )
+        // ItemTouchHelper(ItemTouchHelperCallback(repositoryAdapter)).attachToRecyclerView(binding.container)
         repositoryAdapter.notifyDataSetChanged()
+    }
+
+    private fun initNetwork() {
+
+       val call: Call<List<RepositoryResponseData.Data>> = GithubServiceCreator.githubService.githubRepoGet("dabinKim-0318")
+
+        call.enqueue(object : Callback<List<RepositoryResponseData.Data>> {
+            override fun onResponse(call: Call<List<RepositoryResponseData.Data>>, response: Response<List<RepositoryResponseData.Data>>) {
+                if (response.isSuccessful) {
+                    var data = response.body()!!
+                    initRepositoryAdapter(data)
+                } else {
+                    Toast.makeText(requireContext(),"ddd",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<RepositoryResponseData.Data>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 }
 

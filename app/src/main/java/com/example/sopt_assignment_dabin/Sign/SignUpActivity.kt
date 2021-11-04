@@ -3,13 +3,20 @@ package com.example.sopt_assignment_dabin.Sign
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sopt_assignment_dabin.R
+import com.example.sopt_assignment_dabin.SOPTNetwork.SiginupResponseData
+import com.example.sopt_assignment_dabin.SOPTNetwork.SignServiceCreator
+import com.example.sopt_assignment_dabin.Sign.data.SignupRequestData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignUpBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -17,7 +24,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         //모든 데이터가 입력되었을때 로그인 버튼 색깔 바뀌게하기->addTextChangedListener 사용
         binding.etPass.addTextChangedListener(object : TextWatcher {
@@ -37,22 +43,46 @@ class SignUpActivity : AppCompatActivity() {
 
         //회원가입 완료 버튼 분기 이벤트
         binding.bvLogin.setOnClickListener {
-           clickLogin()
+            clickLogin()
         }
     }
 
-    private  fun clickLogin(){
+    private fun clickLogin() {
         if (isAllEditTextEmpty()) {
             Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
         } else {
-            val intent = Intent(this, SignInActivity::class.java)
-                .putExtra("id", binding.etId.text.toString())
-                .putExtra("pass", binding.etPass.text.toString())
-
-            setResult(Activity.RESULT_OK, intent)
-            finish() //화면이동시 intent아닌 finish로 스택에서 제거
+            initNetwork()
         }
     }
+
+    //Level1->SOPT 네트워크 통신시
+    private fun initNetwork() {
+        val requestSignupData = SignupRequestData(
+            name = binding.etName.text.toString(),
+            email = binding.etId.text.toString(),
+            password = binding.etPass.text.toString()
+        )
+        val call: Call<SiginupResponseData.Data> = SignServiceCreator.signupService.signupLogin(requestSignupData)
+
+        call.enqueue(object : Callback<SiginupResponseData.Data> {
+            override fun onResponse(call: Call<SiginupResponseData.Data>, response: Response<SiginupResponseData.Data>) {
+                if (response.isSuccessful) {
+                    val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                        .putExtra("id", binding.etId.text.toString())
+                        .putExtra("pass", binding.etPass.text.toString())
+                    setResult(Activity.RESULT_OK, intent)
+                    finish() //화면이동시 intent아닌 finish로 스택에서 제거
+                } else {
+                    Toast.makeText(this@SignUpActivity, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<SiginupResponseData.Data>, t: Throwable) {
+                Log.d("Network", "error:$t")
+            }
+        })
+    }
+
 
     private fun isEtNameEmpty(): Boolean {
         return binding.etName.text.isNullOrEmpty()
@@ -66,7 +96,8 @@ class SignUpActivity : AppCompatActivity() {
         return binding.etPass.text.isNullOrEmpty()
     }
 
-    private  fun isAllEditTextEmpty(): Boolean {
+    private fun isAllEditTextEmpty(): Boolean {
         return isEtNameEmpty() || isEtIdEmpty() || isEtPassword()
     }
 }
+

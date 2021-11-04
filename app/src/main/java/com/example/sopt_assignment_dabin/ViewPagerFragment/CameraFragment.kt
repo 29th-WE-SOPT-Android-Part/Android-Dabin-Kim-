@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -53,7 +54,7 @@ class CameraFragment : Fragment() {
         getResultText.launch(intent)
     }
 
-    var getResultText = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+    var getResultText  = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val intent = result.data
