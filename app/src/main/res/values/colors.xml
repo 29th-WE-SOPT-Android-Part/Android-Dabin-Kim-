@@ -8,4 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="sopt">#F658A6</color>
+    <color name="Gray1">#333333</color>
+    <color name="hintGray">#ACB5BD</color>
+    <color name="Gray3">#828282</color>
+    <color name="Gray6">#F2F2F2</color>
+    <color name="hintInerGray">#D0D0D0</color>
+    <color name="pinkpop">#FA79B0</color>
+    <color name="bottom_icon_gray">#8F9090</color>
+    <color name="bottom_icon_pink">#FA79B0</color>
+    <color name="orange">#fab24c</color>
+    <color name="divideGray">#DDE2E5</color>
 </resources>
