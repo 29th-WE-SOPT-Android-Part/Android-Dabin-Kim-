@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.sopt_assignment_dabin.R
 import com.example.sopt_assignment_dabin.SOPTNetwork.SiginupResponseData
 import com.example.sopt_assignment_dabin.SOPTNetwork.SignServiceCreator
+import com.example.sopt_assignment_dabin.Sign.data.SignResponseWrapperData
 import com.example.sopt_assignment_dabin.Sign.data.SignupRequestData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignUpBinding
 import retrofit2.Call
@@ -62,10 +63,10 @@ class SignUpActivity : AppCompatActivity() {
             email = binding.etId.text.toString(),
             password = binding.etPass.text.toString()
         )
-        val call: Call<SiginupResponseData.Data> = SignServiceCreator.signupService.signupLogin(requestSignupData)
+        val call: Call<SignResponseWrapperData<SiginupResponseData>> = SignServiceCreator.signupService.signupLogin(requestSignupData)
 
-        call.enqueue(object : Callback<SiginupResponseData.Data> {
-            override fun onResponse(call: Call<SiginupResponseData.Data>, response: Response<SiginupResponseData.Data>) {
+        call.enqueue(object : Callback<SignResponseWrapperData<SiginupResponseData>> {
+            override fun onResponse(call: Call<SignResponseWrapperData<SiginupResponseData>>, response: Response<SignResponseWrapperData<SiginupResponseData>>) {
                 if (response.isSuccessful) {
                     val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                         .putExtra("id", binding.etId.text.toString())
@@ -77,7 +78,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<SiginupResponseData.Data>, t: Throwable) {
+            override fun onFailure(call: Call<SignResponseWrapperData<SiginupResponseData>>, t: Throwable) {
                 Log.d("Network", "error:$t")
             }
         })

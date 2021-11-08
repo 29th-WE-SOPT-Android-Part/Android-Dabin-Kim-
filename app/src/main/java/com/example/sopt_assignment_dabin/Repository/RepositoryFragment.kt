@@ -2,11 +2,13 @@ package com.example.sopt_assignment_dabin
 
 import HorizontalItemDecorator
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sopt_assignment_dabin.GithubNetwork.GithubServiceCreator
 import com.example.sopt_assignment_dabin.Repository.RepositoryResponseData
@@ -31,8 +33,6 @@ class RepositoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initNetwork()
         super.onViewCreated(view, savedInstanceState)
-
-        Toast.makeText(requireContext(),"",Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
@@ -40,35 +40,35 @@ class RepositoryFragment : Fragment() {
         _binding = null
     }
 
-    fun initRepositoryAdapter(list: List<RepositoryResponseData.Data>) {
+    fun initRepositoryAdapter(list: List<RepositoryResponseData>) {
         val repositoryAdapter = RepositoryAdapter(list)
         binding.container.adapter = repositoryAdapter
-        binding.container.layoutManager = LinearLayoutManager(requireActivity())  //activity, RecyclerView.VERTICAL, false
+        binding.container.layoutManager = LinearLayoutManager(requireActivity())
         binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.rectangle_dividegray_width_1, 0, 0, 0))
         // ItemTouchHelper(ItemTouchHelperCallback(repositoryAdapter)).attachToRecyclerView(binding.container)
-        repositoryAdapter.notifyDataSetChanged()
+        repositoryAdapter.setContact(repositoryAdapter.repositoryList)
     }
 
     private fun initNetwork() {
 
-       val call: Call<List<RepositoryResponseData.Data>> = GithubServiceCreator.githubService.githubRepoGet("dabinKim-0318")
+        val call: Call<List<RepositoryResponseData>> = GithubServiceCreator.githubService.githubRepoGet("dabinKim-0318")
 
-        call.enqueue(object : Callback<List<RepositoryResponseData.Data>> {
-            override fun onResponse(call: Call<List<RepositoryResponseData.Data>>, response: Response<List<RepositoryResponseData.Data>>) {
-                if (response.isSuccessful) {
-                    var data = response.body()!!
+        call.enqueue(object : Callback<List<RepositoryResponseData>> {
+            override fun onResponse(call: Call<List<RepositoryResponseData>>, response: Response<List<RepositoryResponseData>>) {
+                if (response.isSuccessful) {  //응답은 성공적인데 body가 null일수도 있는거 항상 고려
+                    var data = response?.body() ?: listOf()
                     initRepositoryAdapter(data)
                 } else {
-                    Toast.makeText(requireContext(),"ddd",Toast.LENGTH_SHORT).show()
+                    Log.d("successfully connect with Server", response.body().toString())
                 }
             }
-
-            override fun onFailure(call: Call<List<RepositoryResponseData.Data>>, t: Throwable) {
-                TODO("Not yet implemented")
+            override fun onFailure(call: Call<List<RepositoryResponseData>>, t: Throwable) {
+                Log.d("failed with connection Server", t.message.toString())
             }
         })
     }
 }
+
 
 
 

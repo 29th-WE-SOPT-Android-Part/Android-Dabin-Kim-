@@ -48,17 +48,17 @@ class CameraFragment : Fragment() {
     }
 
     private fun startProcess() {
-        val intent = Intent()
-        intent.setType("image/*")
-        intent.setAction(Intent.ACTION_GET_CONTENT)
+        val intent = Intent().apply {
+            setType("image/*")
+            setAction(Intent.ACTION_GET_CONTENT)
+        }
         getResultText.launch(intent)
     }
 
-    var getResultText  = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+    var getResultText = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
     { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            val intent = result.data
-            val uri = intent?.data
+            val uri = result.data?.data  //Intent를 반환->Intent에서 Uri로 get하기
             Glide.with(this).load(uri).into(binding.ivCamera)
         }
         //else if (result.resultCode == Activity.RESULT_CANCELED) {} =>Activity.RESULT_CANCELED일때 처리코드가 필요하다면
@@ -68,14 +68,15 @@ class CameraFragment : Fragment() {
         permissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
-    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { isGranted: Boolean ->
         when (isGranted) {
             true -> startProcess()
             false -> Toast.makeText(getActivity(), "갤러리 권한을 허용해주세요.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun clickGallery(){
+    private fun clickGallery() {
         binding.bvCamera.setOnClickListener {
             checkPermission()
         }

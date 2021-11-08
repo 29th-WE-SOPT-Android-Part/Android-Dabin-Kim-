@@ -13,3 +13,8 @@ data class FollowerResponseDataBio(
     @SerializedName("bio")
     val followerBio: String,
 )
+data class FollowerResponseDataBio2(
+    val followerId: String,
+    val followerProfile: String,
+    val followerBio: String,
+)

@@ -2,11 +2,13 @@ package com.example.sopt_assignment_dabin.Repository
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sopt_assignment_dabin.ItemTouchHelperListener
 import com.example.sopt_assignment_dabin.databinding.ItemRepositoryListBinding
 
-class RepositoryAdapter(val repositoryList: List<RepositoryResponseData.Data>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>(){
+class RepositoryAdapter(var repositoryList: List<RepositoryResponseData>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {
 //    override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
 //        repositoryList.removeAt(fromPosition)
 //        repositoryList.add(toPosition, repositoryList[fromPosition])
@@ -20,7 +22,7 @@ class RepositoryAdapter(val repositoryList: List<RepositoryResponseData.Data>) :
 //    }
 
     class RepositoryViewHolder(private val view: ItemRepositoryListBinding) : RecyclerView.ViewHolder(view.root) {
-        fun onBind(data: RepositoryResponseData.Data) {
+        fun onBind(data: RepositoryResponseData) {
             view.tvName.text = data.repoName
             view.tvStory.text = data.reposUrl
         }
@@ -36,4 +38,11 @@ class RepositoryAdapter(val repositoryList: List<RepositoryResponseData.Data>) :
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         holder.onBind(repositoryList[position])
     }
+
+    fun setContact(contacts: List<RepositoryResponseData>) {
+        val diffResult = DiffUtil.calculateDiff(ContactDiffUtil(this.repositoryList, repositoryList), false)
+        diffResult.dispatchUpdatesTo(this)
+        this.repositoryList = repositoryList
+    }
 }
+

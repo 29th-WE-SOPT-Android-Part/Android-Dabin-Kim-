@@ -14,7 +14,9 @@ class DetailActivity : AppCompatActivity() {
 
         var name = intent.getStringExtra("name")
         var image = intent.getStringExtra("image")
+        var bio = intent.getStringExtra("bio")
         binding.tvMyname.text = name
+        binding.tvMyintroduce.text=bio
         Glide.with(this).load(image).into(binding.ivJjangu)
         setContentView(binding.root)
     }

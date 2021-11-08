@@ -45,36 +45,23 @@ class ProfileFragment : Fragment() {
             .commit()
 
         binding.bvFollower.setOnClickListener {
-            if (binding.bvRepository.isSelected == true) {
                 binding.bvRepository.isSelected = false
                 binding.bvFollower.isSelected = true
                 childFragmentManager
                     .beginTransaction()
                     .replace(R.id.home_container, followerRecyclerViewFragment)
                     .commit()
-            } else {
-                childFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.home_container, followerRecyclerViewFragment)
-                    .commit()
             }
-        }
+
 
         binding.bvRepository.setOnClickListener {
-            if (binding.bvFollower.isSelected == true) {
                 binding.bvFollower.isSelected = false
                 binding.bvRepository.isSelected = true
                 childFragmentManager
                     .beginTransaction()
                     .replace(R.id.home_container, repositoryRecyclerViewFragment)
                     .commit()
-            } else {
-                childFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.home_container, repositoryRecyclerViewFragment)
-                    .commit()
             }
-        }
     }
 
     private fun drawProfileImage() {

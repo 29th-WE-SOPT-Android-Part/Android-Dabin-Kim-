@@ -12,20 +12,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SOPT_assignment_dabin">
+        android:theme="@style/Theme.SOPT_assignment_dabin"
+        android:usesCleartextTraffic="true">
 
         <activity android:name=".Follower.DetailActivity" />
-        <activity android:name=".HomeActivityDataBinding"/>
+        <activity android:name=".HomeActivityDataBinding" />
         <activity
             android:name=".Sign.SignUpActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".Home.HomeActivity"></activity>
         <activity
-            android:name=".Home.HomeActivity"
->
-        </activity>
-        <activity
-            android:exported="true"
             android:name=".Sign.SignInActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

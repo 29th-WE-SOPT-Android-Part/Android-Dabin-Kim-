@@ -9,19 +9,16 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface GithubService {
-    @Headers("accept:application/vnd.github.v3+json", "Authorization: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")
     @GET("/users/{username}/repos")
     fun githubRepoGet(
         @Path("username") username: String
-    ): Call<List<RepositoryResponseData.Data>>
+    ): Call<List<RepositoryResponseData>>
 
-    @Headers("accept:application/vnd.github.v3+json", "Authorization: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")
     @GET("/users/{username}/followers")
     fun githubFollowerGet(
         @Path("username") username: String
     ): Call<List<FollowerResponseData>>
 
-    @Headers("accept:application/vnd.github.v3+json", "Authorization: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")
     @GET("/users/{username}")
     fun githubBioGet(
         @Path("username") username: String
