@@ -102,13 +102,10 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun clickLogin() {
-        if (isAllEditTextEmpty()) {  //(isAllEditTextEmpty() == true) 와 같은..!
+        if (isAllEditTextEmpty()) { 
             Toast.makeText(this, "모든 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
         } else {
             initNetwork()
-// Toast.makeText(this, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
-// val intent = Intent(this, HomeActivity::class.java)
-// startActivity(intent)
         }
     }
 
@@ -126,12 +123,11 @@ class SignInActivity : AppCompatActivity() {
         call.enqueue(object : Callback<SignResponseWrapperData<SigninResponseData>> {
             override fun onResponse(call: Call<SignResponseWrapperData<SigninResponseData>>, response: Response<SignResponseWrapperData<SigninResponseData>>) {
                 if (response.isSuccessful) {
-                    Log.d("isSuccessful", "error")
                     Toast.makeText(this@SignInActivity, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@SignInActivity, HomeActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(this@SignInActivity, "등록되지 않은 사용자 입니다", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SignInActivity, "등록되지 않은 사용자입니다", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -6,6 +6,6 @@ data class RepositoryResponseData(
     @SerializedName("name")
     val repoName: String,
     @SerializedName("full_name")
-    val reposUrl: String,
+    val reposUrl: String
 )
 

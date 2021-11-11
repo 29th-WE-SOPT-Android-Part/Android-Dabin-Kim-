@@ -44,24 +44,25 @@ class ProfileFragment : Fragment() {
             .add(R.id.home_container, followerRecyclerViewFragment)
             .commit()
 
+
         binding.bvFollower.setOnClickListener {
-                binding.bvRepository.isSelected = false
-                binding.bvFollower.isSelected = true
-                childFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.home_container, followerRecyclerViewFragment)
-                    .commit()
-            }
+            binding.bvRepository.isSelected = false
+            binding.bvFollower.isSelected = true
+            childFragmentManager
+                .beginTransaction()
+                .replace(R.id.home_container, followerRecyclerViewFragment)
+                .commit()
+        }
 
 
         binding.bvRepository.setOnClickListener {
-                binding.bvFollower.isSelected = false
-                binding.bvRepository.isSelected = true
-                childFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.home_container, repositoryRecyclerViewFragment)
-                    .commit()
-            }
+            binding.bvFollower.isSelected = false
+            binding.bvRepository.isSelected = true
+            childFragmentManager
+                .beginTransaction()
+                .replace(R.id.home_container, repositoryRecyclerViewFragment)
+                .commit()
+        }
     }
 
     private fun drawProfileImage() {

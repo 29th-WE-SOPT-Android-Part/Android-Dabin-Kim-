@@ -10,24 +10,25 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SOPT_assignment_dabin"
         android:usesCleartextTraffic="true">
 
         <activity android:name=".Follower.DetailActivity" />
-        <activity android:name=".HomeActivityDataBinding" />
+        <activity android:name=".HomeActivityDataBinding"/>
         <activity
             android:name=".Sign.SignUpActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".Home.HomeActivity"></activity>
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Home.HomeActivity"/>
         <activity
             android:name=".Sign.SignInActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

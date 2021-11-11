@@ -45,7 +45,6 @@ class RepositoryFragment : Fragment() {
         binding.container.adapter = repositoryAdapter
         binding.container.layoutManager = LinearLayoutManager(requireActivity())
         binding.container.addItemDecoration(HorizontalItemDecorator(requireActivity(), R.drawable.rectangle_dividegray_width_1, 0, 0, 0))
-        // ItemTouchHelper(ItemTouchHelperCallback(repositoryAdapter)).attachToRecyclerView(binding.container)
         repositoryAdapter.setContact(repositoryAdapter.repositoryList)
     }
 
@@ -55,13 +54,14 @@ class RepositoryFragment : Fragment() {
 
         call.enqueue(object : Callback<List<RepositoryResponseData>> {
             override fun onResponse(call: Call<List<RepositoryResponseData>>, response: Response<List<RepositoryResponseData>>) {
-                if (response.isSuccessful) {  //응답은 성공적인데 body가 null일수도 있는거 항상 고려
+                if (response.isSuccessful) {
                     var data = response?.body() ?: listOf()
                     initRepositoryAdapter(data)
                 } else {
                     Log.d("successfully connect with Server", response.body().toString())
                 }
             }
+
             override fun onFailure(call: Call<List<RepositoryResponseData>>, t: Throwable) {
                 Log.d("failed with connection Server", t.message.toString())
             }

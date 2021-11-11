@@ -14,10 +14,12 @@ interface GithubService {
         @Path("username") username: String
     ): Call<List<RepositoryResponseData>>
 
+
     @GET("/users/{username}/followers")
     fun githubFollowerGet(
         @Path("username") username: String
     ): Call<List<FollowerResponseData>>
+
 
     @GET("/users/{username}")
     fun githubBioGet(

@@ -3,23 +3,10 @@ package com.example.sopt_assignment_dabin.Repository
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sopt_assignment_dabin.ItemTouchHelperListener
 import com.example.sopt_assignment_dabin.databinding.ItemRepositoryListBinding
 
 class RepositoryAdapter(var repositoryList: List<RepositoryResponseData>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {
-//    override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
-//        repositoryList.removeAt(fromPosition)
-//        repositoryList.add(toPosition, repositoryList[fromPosition])
-//        notifyItemMoved(fromPosition, toPosition)
-//        return true
-//    }
-//
-//    override fun onItemSwipe(position: Int) {
-//        repositoryList.removeAt(position)
-//        notifyItemRemoved(position)
-//    }
 
     class RepositoryViewHolder(private val view: ItemRepositoryListBinding) : RecyclerView.ViewHolder(view.root) {
         fun onBind(data: RepositoryResponseData) {

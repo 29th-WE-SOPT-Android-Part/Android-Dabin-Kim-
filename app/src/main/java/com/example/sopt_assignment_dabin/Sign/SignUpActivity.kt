@@ -74,7 +74,7 @@ class SignUpActivity : AppCompatActivity() {
                     setResult(Activity.RESULT_OK, intent)
                     finish() //화면이동시 intent아닌 finish로 스택에서 제거
                 } else {
-                    Toast.makeText(this@SignUpActivity, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SignUpActivity, "이미 등록된 사용자입니다", Toast.LENGTH_SHORT).show()
                 }
             }
 

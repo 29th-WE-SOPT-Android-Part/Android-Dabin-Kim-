@@ -31,9 +31,7 @@ class AppInterceptorGit : Interceptor {
             : okhttp3.Response = with(chain) {
         val newRequest = request().newBuilder()
             .addHeader("accept", "application/vnd.github.v3+json")
-            .addHeader("Authorization", "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")
             .build()
-
         proceed(newRequest)
     }
 }
