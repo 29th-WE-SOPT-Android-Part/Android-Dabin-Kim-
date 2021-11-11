@@ -16,15 +16,15 @@
         android:theme="@style/Theme.SOPT_assignment_dabin"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".Follower.DetailActivity" />
+        <activity android:name=".follower.DetailActivity" />
         <activity android:name=".HomeActivityDataBinding"/>
         <activity
-            android:name=".Sign.SignUpActivity"
+            android:name=".sign.SignUpActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name=".Home.HomeActivity"/>
+            android:name=".home.HomeActivity"/>
         <activity
-            android:name=".Sign.SignInActivity"
+            android:name=".sign.SignInActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

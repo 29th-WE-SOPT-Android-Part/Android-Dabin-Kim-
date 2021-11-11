@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pinkpop"
-    tools:context=".ViewPagerFragment.ProfileFragment">
+    tools:context=".viewpager_fragment.ProfileFragment">
 
     <ImageView
         android:id="@+id/iv_profile"
