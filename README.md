@@ -642,6 +642,132 @@ binding.container.addItemDecoration(VerticalItemDecorator(activity, R.drawable.r
 - 권한처리에 대해 배웠는데 어려워서 더 배워야 할 듯  
 </details>
 
+  <details> 
+ <summary>week4</summary>
+ <!-- summary 아래 한칸 공백 두어야함 --> 
+ 
+|  | 작고 귀여운.. 팔로워들,,^^  |  
+|:----------|:----------:|
+| <img src="https://user-images.githubusercontent.com/84564695/141331545-2e27d292-5ab0-4988-9ebd-ff7fd224f4f8.gif" width="200" height="380"/> | <img src="https://user-images.githubusercontent.com/84564695/141331246-4a342d22-d075-4bde-826a-e467eeafea0c.gif" width="200" height="380"/> |
+  
+## ✅Level1
+### ✔ ***포스트맨***
+![1](https://user-images.githubusercontent.com/84564695/141328684-ec8323f3-f94d-4c05-9641-b2770c9c5a52.PNG)
+   ***
+![2](https://user-images.githubusercontent.com/84564695/141328691-ed9c5b1d-37f7-4f51-8b77-313153e38a2c.PNG)
+
+## ✅Level1&2-1&2-2
+### ✔ ***Github API연동***
+- #### GithubService
+```kotlin
+   interface GithubService {
+    @GET("/users/{username}/repos")
+    fun githubRepoGet(
+        @Path("username") username: String
+    ): Call<List<RepositoryResponseData>>
+
+
+    @GET("/users/{username}/followers")
+    fun githubFollowerGet(
+        @Path("username") username: String
+    ): Call<List<FollowerResponseData>>
+
+
+    @GET("/users/{username}")
+    fun githubBioGet(
+        @Path("username") username: String
+    ): Call<FollowerResponseDataBio> }
+```
+- #### Data
+```kotlin
+  data class FollowerResponseData(
+    @SerializedName("login")
+    val followerId: String,
+    @SerializedName("avatar_url")
+    val followerProfile: String
+)
+
+data class FollowerResponseDataBio(
+val bio: String?
+)
+
+data class FollowerData(
+    val followerId: String,
+    val followerProfile: String,
+    val followerBio: String
+)
+```
+### ✔ ***중복되는 헤더 없애기***
+- #### GithubServiceCreator
+```kotlin
+   object GithubServiceCreator {
+    private val BASE_URL = "https://api.github.com"
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(provideOkHttpClient(AppInterceptorGit()))
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val githubService: GithubService = retrofit.create(GithubService::class.java)
+}
+
+private fun provideOkHttpClient(
+    interceptor: AppInterceptorGit
+): OkHttpClient = OkHttpClient.Builder()
+    .run {
+        addInterceptor(interceptor)
+        build()
+    }
+
+class AppInterceptorGit : Interceptor {
+    @Throws(IOException::class)
+    override fun intercept(chain: Interceptor.Chain)
+            : okhttp3.Response = with(chain) {
+        val newRequest = request().newBuilder()
+            .addHeader("accept", "application/vnd.github.v3+json")
+            .build()
+        proceed(newRequest)
+    }
+}
+```
+
+## ✅Level2-3
+### ✔ ***중복되는 request/response데이터 없애기***
+- #### SignResponseWrapperData: SignResponseWrapperData 를 만들어서 request/respond 데이터를 감싸줌
+```kotlin
+    data class SignResponseWrapperData<T>(
+    val status: Int,
+    val success: Boolean,
+    val message: String,
+    val data: T? = null
+)
+```
+```kotlin
+   interface SignupService {
+    @POST("user/signup")
+    fun signupLogin(
+        @Body body: SignupRequestData
+    ): Call<SignResponseWrapperData<SiginupResponseData>>
+}
+
+interface SigninService {
+    @POST("user/login")
+    fun signinLogin(
+        @Body body: SigninRequestData
+    ): Call<SignResponseWrapperData<SigninResponseData>>
+}
+```
+
+## ✅배운 것
+- 포스트맨사용법 
+- retrofit이용해서 서버 통신하는 법
+- OkHttp 사용하는 법
+- Wrapper클래스로 공통 부분 묶을 수 있다는 것
+- 팔로워 bio 넣어서 새로운 리스트 만들면서 왜 안드로이드 아키텍쳐를 배워야하는지 뼈저리게 느꼈다......
+  서버 통신부분이랑 데이터 조작하는 부분, UI그리는 부분 등이 분리가 안되어있으니까 머리가 핑 돌았다. 빨리 아키텍쳐 패턴 공부해야겟다....................
+- 팔로워 bio 불러오는거 구현하긴 했는데 우당탕탕 돌아가는 느낌이다. 스파게티 코드란 이런걸까? ㅋ..ㅋ
+</details>
+ 
 ![github_김의진_ver1-10](https://user-images.githubusercontent.com/70698151/135753837-7997f154-ca2b-4b7a-bf51-a6fe3f29947f.png)
 
 
