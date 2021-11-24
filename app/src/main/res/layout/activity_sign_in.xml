@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sign.SignInActivity">
+    tools:context=".sign.SignInActivity">
 
     <ImageView
         android:id="@+id/iv_signin_github"
@@ -45,7 +45,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/sign_input_selector"
+        android:background="@drawable/bg_pink_gray6_selector"
         android:fontFamily="@font/notosanskr_regular"
         android:hint="깃허브 아이디를 입력해주세요."
         android:paddingStart="16dp"
@@ -81,7 +81,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:background="@drawable/sign_input_selector"
+        android:background="@drawable/bg_pink_gray6_selector"
         android:fontFamily="@font/notosanskr_regular"
         android:hint="비밀번호를 입력해주세요"
         android:inputType="textPassword"
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="173dp"
         android:layout_marginBottom="74dp"
-        android:background="@drawable/login_background"
+        android:background="@drawable/rectangle_gray_radius_8"
         android:text="로그인"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

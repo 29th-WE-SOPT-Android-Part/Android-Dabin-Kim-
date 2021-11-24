@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FollowerRecyclerView">
+    tools:context=".FollowerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:spanCount="2"
         tools:itemCount="4"
-        tools:listitem="@layout/item_follower_list" />
+        tools:listitem="@layout/item_follower_list"
+        android:layout_marginBottom="56dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,10 +51,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0' //gif
     implementation 'com.github.bumptech.glide:glide:4.11.0'  //glide사용
-    kapt 'com.github.bumptech.glide:compiler:4.11.0'  //glide사용+kapt사용위해 앞단 kapt로 바꿈
+    implementation 'com.github.bumptech.glide:compiler:4.11.0'  //glide사용+kapt사용위해 앞단 kapt로 바꿈
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'com.google.android.material:material:1.1.0' //bottomnavigation 아이콘 크기변경
-
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' //Gson 컨버터 라이브러리 추가
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' //Retrofit 사용
+    implementation 'com.google.code.gson:gson:2.8.9' //Gson라이브러리 추가
+    implementation "androidx.constraintlayout:constraintlayout:2.1.1"
 
 }

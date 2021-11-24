@@ -5,7 +5,7 @@
     android:id="@+id/top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home.HomeActivity">
+    tools:context=".home.HomeActivity">
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -27,6 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/home_bottomnavigation_menulist" />
+        app:menu="@menu/menu_home_bottomnavigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
