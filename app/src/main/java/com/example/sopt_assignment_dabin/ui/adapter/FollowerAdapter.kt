@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sopt_assignment_dabin.databinding.ItemFollowerListBinding
+import com.example.sopt_assignment_dabin.ui.DetailActivity
 
 class FollowerAdapter(var followerList: MutableList<FollowerData>) : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
     inner class FollowerViewHolder(private val view: ItemFollowerListBinding) : RecyclerView.ViewHolder(view.root) {

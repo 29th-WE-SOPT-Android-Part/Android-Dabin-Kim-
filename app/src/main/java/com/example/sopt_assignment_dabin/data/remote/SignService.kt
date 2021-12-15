@@ -1,9 +1,9 @@
 package com.example.sopt_assignment_dabin.sopt
 
-import com.example.sopt_assignment_dabin.sign.data.SignResponseWrapperData
-import com.example.sopt_assignment_dabin.sign.data.SigninRequestData
-import com.example.sopt_assignment_dabin.sign.data.SigninResponseData
-import com.example.sopt_assignment_dabin.sign.data.SignupRequestData
+import com.example.sopt_assignment_dabin.data.data.SignResponseWrapperData
+import com.example.sopt_assignment_dabin.data.data.SigninRequestData
+import com.example.sopt_assignment_dabin.data.data.SigninResponseData
+import com.example.sopt_assignment_dabin.data.data.SignupRequestData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

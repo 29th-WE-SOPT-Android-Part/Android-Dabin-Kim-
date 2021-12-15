@@ -1,7 +1,7 @@
-package com.example.sopt_assignment_dabin.follower
+package com.example.sopt_assignment_dabin.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.sopt_assignment_dabin.databinding.ActivityDetailBinding
 

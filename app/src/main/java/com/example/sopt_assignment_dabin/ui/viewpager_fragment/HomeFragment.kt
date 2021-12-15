@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.sopt_assignment_dabin.viewpager_adapter.HomeViewPagerAdapter
+import com.example.sopt_assignment_dabin.ui.adapter.HomeViewPagerAdapter
 import com.example.sopt_assignment_dabin.databinding.FragmentHomeBackgroundViewPagerBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

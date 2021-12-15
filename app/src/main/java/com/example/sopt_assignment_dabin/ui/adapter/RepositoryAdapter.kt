@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
 import com.example.sopt_assignment_dabin.databinding.ItemRepositoryListBinding
 
 class RepositoryAdapter(var repositoryList: List<RepositoryResponseData>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {

@@ -2,7 +2,7 @@ package com.example.sopt_assignment_dabin.github
 
 import com.example.sopt_assignment_dabin.follower.FollowerResponseData
 import com.example.sopt_assignment_dabin.follower.FollowerResponseDataBio
-import com.example.sopt_assignment_dabin.repository.RepositoryResponseData
+import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,6 +1,7 @@
 package com.example.sopt_assignment_dabin.repository
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
 
 class ContactDiffUtil(private val oldList: List<RepositoryResponseData>, private val currentList: List<RepositoryResponseData>) :
     DiffUtil.Callback() {

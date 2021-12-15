@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.sign.data
+package com.example.sopt_assignment_dabin.data.data
 
 
 data class SignResponseWrapperData<T>(

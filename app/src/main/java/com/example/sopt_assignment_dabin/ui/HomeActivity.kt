@@ -1,13 +1,11 @@
-package com.example.sopt_assignment_dabin.home
+package com.example.sopt_assignment_dabin.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sopt_assignment_dabin.R
-import com.example.sopt_assignment_dabin.viewpager_adapter.BackgroundViewPagerAdapter
-import com.example.sopt_assignment_dabin.viewpager_fragment.CameraFragment
-import com.example.sopt_assignment_dabin.viewpager_fragment.HomeFragment
-import com.example.sopt_assignment_dabin.viewpager_fragment.ProfileFragment
+import com.example.sopt_assignment_dabin.ui.adapter.BackgroundViewPagerAdapter
+import com.example.sopt_assignment_dabin.ui.viewpager_fragment.HomeFragment
 import com.example.sopt_assignment_dabin.databinding.ActivityHomeMainBinding
 
 class HomeActivity : AppCompatActivity() {

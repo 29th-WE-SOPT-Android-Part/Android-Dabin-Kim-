@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sopt_assignment_dabin.github.GithubServiceCreator
-import com.example.sopt_assignment_dabin.repository.RepositoryResponseData
+import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
 import com.example.sopt_assignment_dabin.repository.RepositoryAdapter
 import com.example.sopt_assignment_dabin.databinding.FragmentRepositoryRecyclerViewBinding
 import retrofit2.Call

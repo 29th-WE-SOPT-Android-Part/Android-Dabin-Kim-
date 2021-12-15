@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.viewpager_fragment
+package com.example.sopt_assignment_dabin.ui.viewpager_fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.sopt_assignment_dabin.FollowerFragment
+import com.example.sopt_assignment_dabin.ui.FollowerFragment
 import com.example.sopt_assignment_dabin.R
-import com.example.sopt_assignment_dabin.RepositoryFragment
+import com.example.sopt_assignment_dabin.ui.RepositoryFragment
 import com.example.sopt_assignment_dabin.databinding.FragmentProfileBackgroundViewpagerBinding
 
 
