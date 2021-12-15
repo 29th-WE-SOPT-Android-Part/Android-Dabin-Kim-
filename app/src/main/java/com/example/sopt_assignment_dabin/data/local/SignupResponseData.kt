@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.sopt
+package com.example.sopt_assignment_dabin.data.local
 
 data class SiginupResponseData(
     val id: Int,

@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.viewpager_fragment
+package com.example.sopt_assignment_dabin.ui.viewpager_fragment
 
 import android.content.Context
 import android.util.AttributeSet

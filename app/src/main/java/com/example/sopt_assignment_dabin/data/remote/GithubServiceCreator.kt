@@ -1,5 +1,6 @@
 package com.example.sopt_assignment_dabin.github
 
+import com.example.sopt_assignment_dabin.data.remote.GithubService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

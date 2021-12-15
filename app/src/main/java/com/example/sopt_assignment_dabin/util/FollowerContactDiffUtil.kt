@@ -2,7 +2,7 @@ package com.example.sopt_assignment_dabin.follower
 
 import androidx.recyclerview.widget.DiffUtil
 
-class ContactDiffUtil(private val oldList: MutableList<FollowerData>, private val currentList: MutableList<FollowerData>) :
+class FollowerContactDiffUtil(private val oldList: MutableList<FollowerData>, private val currentList: MutableList<FollowerData>) :
     DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 

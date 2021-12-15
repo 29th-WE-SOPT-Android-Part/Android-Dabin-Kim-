@@ -1,12 +1,11 @@
+package com.example.sopt_assignment_dabin.util
+
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.view.View
-import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
 class HorizontalItemDecorator(
     context: Context,

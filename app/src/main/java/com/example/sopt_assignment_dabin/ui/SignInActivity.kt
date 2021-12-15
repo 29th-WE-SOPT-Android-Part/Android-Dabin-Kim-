@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.sign
+package com.example.sopt_assignment_dabin.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -12,12 +12,11 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sopt_assignment_dabin.home.HomeActivity
 import com.example.sopt_assignment_dabin.R
 import com.example.sopt_assignment_dabin.sopt.SignServiceCreator
-import com.example.sopt_assignment_dabin.sign.data.SignResponseWrapperData
-import com.example.sopt_assignment_dabin.sign.data.SigninRequestData
-import com.example.sopt_assignment_dabin.sign.data.SigninResponseData
+import com.example.sopt_assignment_dabin.data.local.SignResponseWrapperData
+import com.example.sopt_assignment_dabin.data.local.SigninRequestData
+import com.example.sopt_assignment_dabin.data.local.SigninResponseData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignInBinding
 import retrofit2.Call
 import retrofit2.Callback

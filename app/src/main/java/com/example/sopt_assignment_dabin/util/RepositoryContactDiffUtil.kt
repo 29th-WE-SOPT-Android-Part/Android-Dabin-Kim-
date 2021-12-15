@@ -1,9 +1,9 @@
-package com.example.sopt_assignment_dabin.repository
+package com.example.sopt_assignment_dabin.util
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
 
-class ContactDiffUtil(private val oldList: List<RepositoryResponseData>, private val currentList: List<RepositoryResponseData>) :
+class RepositoryContactDiffUtil(private val oldList: List<RepositoryResponseData>, private val currentList: List<RepositoryResponseData>) :
     DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 

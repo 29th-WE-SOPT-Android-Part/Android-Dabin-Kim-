@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.github
+package com.example.sopt_assignment_dabin.data.remote
 
 import com.example.sopt_assignment_dabin.follower.FollowerResponseData
 import com.example.sopt_assignment_dabin.follower.FollowerResponseDataBio

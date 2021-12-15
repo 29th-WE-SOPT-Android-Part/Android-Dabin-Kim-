@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.repository
+package com.example.sopt_assignment_dabin.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
 import com.example.sopt_assignment_dabin.databinding.ItemRepositoryListBinding
+import com.example.sopt_assignment_dabin.util.RepositoryContactDiffUtil
 
 class RepositoryAdapter(var repositoryList: List<RepositoryResponseData>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {
 
@@ -28,7 +29,7 @@ class RepositoryAdapter(var repositoryList: List<RepositoryResponseData>) : Recy
     }
 
     fun setContact(contacts: List<RepositoryResponseData>) {
-        val diffResult = DiffUtil.calculateDiff(ContactDiffUtil(this.repositoryList, repositoryList), false)
+        val diffResult = DiffUtil.calculateDiff(RepositoryContactDiffUtil(this.repositoryList, repositoryList), false)
         diffResult.dispatchUpdatesTo(this)
         this.repositoryList = repositoryList
     }

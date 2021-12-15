@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin
+package com.example.sopt_assignment_dabin.util
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

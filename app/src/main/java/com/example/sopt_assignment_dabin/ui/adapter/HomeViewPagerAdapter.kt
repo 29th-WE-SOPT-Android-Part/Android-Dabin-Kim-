@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.viewpager_adapter
+package com.example.sopt_assignment_dabin.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

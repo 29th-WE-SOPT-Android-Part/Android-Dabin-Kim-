@@ -1,7 +1,7 @@
-package com.example.sopt_assignment_dabin
+package com.example.sopt_assignment_dabin.ui
 
 
-import HorizontalItemDecorator
+import com.example.sopt_assignment_dabin.util.HorizontalItemDecorator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sopt_assignment_dabin.R
 import com.example.sopt_assignment_dabin.databinding.FragmentFollowerRecyclerViewBinding
-import com.example.sopt_assignment_dabin.follower.FollowerAdapter
+import com.example.sopt_assignment_dabin.ui.adapter.FollowerAdapter
 import com.example.sopt_assignment_dabin.follower.FollowerData
 import com.example.sopt_assignment_dabin.follower.FollowerResponseData
 import com.example.sopt_assignment_dabin.follower.FollowerResponseDataBio

@@ -1,6 +1,6 @@
-package com.example.sopt_assignment_dabin
+package com.example.sopt_assignment_dabin.ui
 
-import HorizontalItemDecorator
+import com.example.sopt_assignment_dabin.util.HorizontalItemDecorator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sopt_assignment_dabin.R
 import com.example.sopt_assignment_dabin.github.GithubServiceCreator
 import com.example.sopt_assignment_dabin.data.local.RepositoryResponseData
-import com.example.sopt_assignment_dabin.repository.RepositoryAdapter
+import com.example.sopt_assignment_dabin.ui.adapter.RepositoryAdapter
 import com.example.sopt_assignment_dabin.databinding.FragmentRepositoryRecyclerViewBinding
 import retrofit2.Call
 import retrofit2.Callback

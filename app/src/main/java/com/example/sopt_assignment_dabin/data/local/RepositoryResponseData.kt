@@ -1,4 +1,4 @@
-package com.example.sopt_assignment_dabin.repository
+package com.example.sopt_assignment_dabin.data.local
 
 import com.google.gson.annotations.SerializedName
 
