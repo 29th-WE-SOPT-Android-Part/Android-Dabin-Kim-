@@ -18,9 +18,14 @@ import com.example.sopt_assignment_dabin.data.local.SignResponseWrapperData
 import com.example.sopt_assignment_dabin.data.local.SigninRequestData
 import com.example.sopt_assignment_dabin.data.local.SigninResponseData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignInBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var getResultText: ActivityResultLauncher<Intent>//회원가입 데이터 리턴받을 때 사용
@@ -115,22 +120,19 @@ class SignInActivity : AppCompatActivity() {
             email = binding.etIdIn.text.toString(),
             password = binding.etPassIn.text.toString()
         )
-        val call: Call<SignResponseWrapperData<SigninResponseData>> = SignServiceCreator.signinService.signinLogin(requestData)
-        call.enqueue(object : Callback<SignResponseWrapperData<SigninResponseData>> {
-            override fun onResponse(call: Call<SignResponseWrapperData<SigninResponseData>>, response: Response<SignResponseWrapperData<SigninResponseData>>) {
-                if (response.isSuccessful) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                SignServiceCreator.signinService.signinLogin(requestData)
+                withContext(Dispatchers.Main) {
                     Toast.makeText(this@SignInActivity, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@SignInActivity, HomeActivity::class.java)
-                    startActivity(intent)
-                } else {
+                }
+                val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                startActivity(intent)
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
                     Toast.makeText(this@SignInActivity, "등록되지 않은 사용자입니다", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            override fun onFailure(call: Call<SignResponseWrapperData<SigninResponseData>>, t: Throwable) {
-                Log.d("Network", "error:$t")
-            }
-        })
-
+        }
     }
 }

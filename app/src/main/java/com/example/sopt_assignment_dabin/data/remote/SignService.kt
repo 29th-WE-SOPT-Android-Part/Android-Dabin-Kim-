@@ -7,14 +7,14 @@ import retrofit2.http.POST
 
 interface SignupService {
     @POST("user/signup")
-    fun signupLogin(
+    suspend fun signupLogin(
         @Body body: SignupRequestData
-    ): Call<SignResponseWrapperData<SiginupResponseData>>
+    ): SignResponseWrapperData<SiginupResponseData>
 }
 
 interface SigninService {
     @POST("user/login")
-    fun signinLogin(
+    suspend fun signinLogin(
         @Body body: SigninRequestData
-    ): Call<SignResponseWrapperData<SigninResponseData>>
+    ): SignResponseWrapperData<SigninResponseData>
 }

@@ -15,6 +15,10 @@ import com.example.sopt_assignment_dabin.sopt.SignServiceCreator
 import com.example.sopt_assignment_dabin.data.local.SignResponseWrapperData
 import com.example.sopt_assignment_dabin.data.local.SignupRequestData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignUpBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,27 +67,22 @@ class SignUpActivity : AppCompatActivity() {
             email = binding.etId.text.toString(),
             password = binding.etPass.text.toString()
         )
-        val call: Call<SignResponseWrapperData<SiginupResponseData>> = SignServiceCreator.signupService.signupLogin(requestSignupData)
 
-        call.enqueue(object : Callback<SignResponseWrapperData<SiginupResponseData>> {
-            override fun onResponse(call: Call<SignResponseWrapperData<SiginupResponseData>>, response: Response<SignResponseWrapperData<SiginupResponseData>>) {
-                if (response.isSuccessful) {
-                    val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
-                        .putExtra("id", binding.etId.text.toString())
-                        .putExtra("pass", binding.etPass.text.toString())
-                    setResult(Activity.RESULT_OK, intent)
-                    finish() //화면이동시 intent아닌 finish로 스택에서 제거
-                } else {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                SignServiceCreator.signupService.signupLogin(requestSignupData)
+                val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                    .putExtra("id", binding.etId.text.toString())
+                    .putExtra("pass", binding.etPass.text.toString())
+                setResult(Activity.RESULT_OK, intent)
+                finish() //화면이동시 intent아닌 finish로 스택에서 제거
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
                     Toast.makeText(this@SignUpActivity, "이미 등록된 사용자입니다", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            override fun onFailure(call: Call<SignResponseWrapperData<SiginupResponseData>>, t: Throwable) {
-                Log.d("Network", "error:$t")
-            }
-        })
+        }
     }
-
 
     private fun isEtNameEmpty(): Boolean {
         return binding.etName.text.isNullOrEmpty()

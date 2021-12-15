@@ -9,9 +9,9 @@ import retrofit2.http.Path
 
 interface GithubService {
     @GET("/users/{username}/repos")
-    fun githubRepoGet(
+    suspend fun githubRepoGet(
         @Path("username") username: String
-    ): Call<List<RepositoryResponseData>>
+    ): List<RepositoryResponseData>
 
 
     @GET("/users/{username}/followers")
