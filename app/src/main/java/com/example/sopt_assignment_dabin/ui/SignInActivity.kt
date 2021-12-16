@@ -2,7 +2,9 @@ package com.example.sopt_assignment_dabin.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,17 +16,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sopt_assignment_dabin.R
 import com.example.sopt_assignment_dabin.sopt.SignServiceCreator
-import com.example.sopt_assignment_dabin.data.local.SignResponseWrapperData
 import com.example.sopt_assignment_dabin.data.local.SigninRequestData
-import com.example.sopt_assignment_dabin.data.local.SigninResponseData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignInBinding
+import com.example.sopt_assignment_dabin.util.util.shortToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.lang.Exception
 
 class SignInActivity : AppCompatActivity() {
@@ -49,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(inputChar: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (isEtIdEmpty() != true && isEtPassword() != true && inputChar.toString() != "") {
+                if (binding.etPassIn.text.isNotBlank() && binding.etIdIn.text.isNotBlank()) {
                     binding.bvLogin.setBackgroundResource(R.drawable.rectangle_sopt_radius_8)
                 }
             }
@@ -59,6 +57,11 @@ class SignInActivity : AppCompatActivity() {
         binding.bvLogin.setOnClickListener {
             clickLogin()
         }
+
+        //자동 로그인
+        autoClickEvent()
+        isAutoLogin(this)
+
 
         //회원가입 버튼시 이벤트->데이터 리턴받아와야함!
         binding.tvSignUp.setOnClickListener {
@@ -89,24 +92,11 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    //모든 데이터가 입력되었는지 확인
-    private fun isEtIdEmpty(): Boolean {
-        return binding.etIdIn.text.isNullOrEmpty()
-    }
-
-    private fun isEtPassword(): Boolean {
-        return binding.etPassIn.text.isNullOrEmpty()
-    }
-
-    private fun isAllEditTextEmpty(): Boolean {
-        return isEtIdEmpty() || isEtPassword()
-    }
-
     private fun clickLogin() {
-        if (isAllEditTextEmpty()) {
-            Toast.makeText(this, "모든 정보를 입력해주세요", Toast.LENGTH_SHORT).show()
-        } else {
+        if (binding.etPassIn.text.isNotBlank() && binding.etIdIn.text.isNotBlank()) {
             initNetwork()
+        } else {
+            shortToast("모든 정보를 입력해주세요")
         }
     }
 
@@ -124,15 +114,91 @@ class SignInActivity : AppCompatActivity() {
             try {
                 SignServiceCreator.signinService.signinLogin(requestData)
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@SignInActivity, "${binding.etIdIn.text}님 환영합니다", Toast.LENGTH_SHORT).show()
+                    shortToast("${binding.etIdIn.text}님 환영합니다")
                 }
                 val intent = Intent(this@SignInActivity, HomeActivity::class.java)
                 startActivity(intent)
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@SignInActivity, "등록되지 않은 사용자입니다", Toast.LENGTH_SHORT).show()
+                    shortToast("등록되지 않은 사용자입니다")
                 }
             }
         }
+    }
+
+    private fun autoClickEvent() {
+        binding.ctAutoLogin.setOnClickListener {
+            binding.ctAutoLogin.toggle()
+            AutoLogin.setAutoLogin(
+                this,
+                binding.ctAutoLogin.isChecked,
+                binding.etIdIn.text.toString(),
+                binding.etPassIn.text.toString()
+            )
+        }
+    }
+
+    fun isAutoLogin(context: Context) {
+        if (AutoLogin.getAutoLogin(this)) {
+            val requestData = SigninRequestData(
+                email = AutoLogin.getSharedpf(context).getString(AutoLogin.USER_ID, "")!!,
+                password = AutoLogin.getSharedpf(context).getString(AutoLogin.USER_PASS, "")!!
+            )
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    SignServiceCreator.signinService.signinLogin(requestData)
+                    withContext(Dispatchers.Main) {
+                        shortToast("자동 로그인")
+                    }
+                    val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+}
+
+object AutoLogin {
+
+    private const val STORAGE_KEY = "com.example.sopt_assignment_dabin.app"
+    val ONBOARDING = "ONBOARDING"
+    val AUTO_LOGIN = "AUTO_LOGIN"
+    val USER_ID = "USER_ID"
+    val USER_PASS = "USER_PASS"
+
+    fun setOnBoarding(context: Context, init: Boolean) {
+        getSharedpf(context).edit()
+            .putBoolean(ONBOARDING, init)
+            .apply()
+    }
+
+    fun getOnBoarding(context: Context): Boolean {
+        return getSharedpf(context).getBoolean(ONBOARDING, true)
+    }
+
+    fun getAutoLogin(context: Context): Boolean {
+        return getSharedpf(context).getBoolean(AUTO_LOGIN, false)
+    }
+
+    fun setAutoLogin(context: Context, checked: Boolean, id: String = "", pass: String = "") {
+        getSharedpf(context).edit()
+            .putBoolean(AUTO_LOGIN, checked)
+            .putString(USER_ID, id)
+            .putString(USER_PASS, pass)
+            .apply()
+    }
+
+    fun removeAutoLogin(context: Context) {
+        getSharedpf(context).edit()
+            .remove(USER_ID)
+            .remove(USER_PASS)
+            .apply()
+    }
+
+    fun getSharedpf(context: Context): SharedPreferences {
+        return context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
     }
 }

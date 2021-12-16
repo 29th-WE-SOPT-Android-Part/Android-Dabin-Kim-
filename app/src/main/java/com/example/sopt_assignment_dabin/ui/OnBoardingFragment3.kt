@@ -21,15 +21,16 @@ class OnBoardingFragment3 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnBoarding3Binding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btNext.setOnClickListener {
             val intent = Intent(requireContext(), SignInActivity::class.java)
             ContextCompat.startActivity(requireContext(), intent, null)
+            AutoLogin.setOnBoarding(requireContext(), false)
             requireActivity().finish()
         }
-
-
-        return binding.root
     }
 
     override fun onDestroy() {

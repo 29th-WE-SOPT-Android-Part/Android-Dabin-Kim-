@@ -19,12 +19,13 @@ class OnBoardingFragment2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOnBoarding2Binding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btNext.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardingFragment2_to_onBoardingFragment3)
         }
-
-        return binding.root
     }
 
     override fun onDestroy() {

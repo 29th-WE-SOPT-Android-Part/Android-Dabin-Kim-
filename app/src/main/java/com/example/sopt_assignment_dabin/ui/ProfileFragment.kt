@@ -1,5 +1,6 @@
 package com.example.sopt_assignment_dabin.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         drawProfileImage()
         transactionEvent()
+        clickPreference()
     }
 
     private fun transactionEvent() {
@@ -65,6 +67,13 @@ class ProfileFragment : Fragment() {
             .load(R.drawable.img_home_user)
             .circleCrop()
             .into(binding.ivProfile)
+    }
+
+    private fun clickPreference() {
+        binding.ivPreference.setOnClickListener {
+            val intent = Intent(requireContext(), PreferenceActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {

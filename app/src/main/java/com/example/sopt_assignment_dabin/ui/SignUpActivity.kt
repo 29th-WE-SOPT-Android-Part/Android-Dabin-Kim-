@@ -40,7 +40,7 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (isEtNameEmpty() != true && isEtIdEmpty() != true && isEtPassword() != true && p0.toString() != "") {
+                if (binding.etPass.text.isNotBlank() && binding.etName.text.isNotBlank() && binding.etId.text.isNotBlank()) {
                     binding.bvLogin.setBackgroundResource(R.drawable.rectangle_sopt_radius_8)
                 }
             }
@@ -53,10 +53,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun clickLogin() {
-        if (isAllEditTextEmpty()) {
-            Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
-        } else {
+        if (binding.etPass.text.isNotBlank() && binding.etName.text.isNotBlank() && binding.etId.text.isNotBlank()) {
             initNetwork()
+        } else {
+            Toast.makeText(this, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -82,22 +82,6 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun isEtNameEmpty(): Boolean {
-        return binding.etName.text.isNullOrEmpty()
-    }
-
-    private fun isEtIdEmpty(): Boolean {
-        return binding.etId.text.isNullOrEmpty()
-    }
-
-    private fun isEtPassword(): Boolean {
-        return binding.etPass.text.isNullOrEmpty()
-    }
-
-    private fun isAllEditTextEmpty(): Boolean {
-        return isEtNameEmpty() || isEtIdEmpty() || isEtPassword()
     }
 }
 
