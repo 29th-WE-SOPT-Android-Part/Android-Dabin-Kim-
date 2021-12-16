@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/onBoardingFragment1"
         android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment1"
-        android:label="fragment_on_boarding1"
+        android:label="첫번째 화면"
         tools:layout="@layout/fragment_on_boarding1">
         <action
             android:id="@+id/action_onBoardingFragment1_to_onBoardingFragment2"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/onBoardingFragment2"
         android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment2"
-        android:label="fragment_on_boarding2"
+        android:label="두번째 화면"
         tools:layout="@layout/fragment_on_boarding2">
         <action
             android:id="@+id/action_onBoardingFragment2_to_onBoardingFragment3"
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/onBoardingFragment3"
         android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment3"
-        android:label="fragment_on_boarding3"
+        android:label="세번째 화면"
         tools:layout="@layout/fragment_on_boarding3">
         <action
             android:id="@+id/action_onBoardingFragment3_to_onBoardingFragment1"
