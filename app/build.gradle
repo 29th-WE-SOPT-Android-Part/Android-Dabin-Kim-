@@ -59,5 +59,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0' //Retrofit 사용
     implementation 'com.google.code.gson:gson:2.8.9' //Gson라이브러리 추가
     implementation "androidx.constraintlayout:constraintlayout:2.1.1"
-
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5" // navigation component
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"  // navigation component
 }
