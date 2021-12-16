@@ -6,14 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.OnBoardingActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fc_container"
-        android:layout_width="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_onboarding"
-        android:layout_height="match_parent"
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fc_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_onboarding" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
