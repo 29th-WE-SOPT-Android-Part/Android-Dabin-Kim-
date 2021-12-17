@@ -4,26 +4,23 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sopt_assignment_dabin.R
-import com.example.sopt_assignment_dabin.sopt.SignServiceCreator
 import com.example.sopt_assignment_dabin.data.local.SigninRequestData
 import com.example.sopt_assignment_dabin.databinding.ActivitySignInBinding
-import com.example.sopt_assignment_dabin.util.util.shortToast
+import com.example.sopt_assignment_dabin.sopt.SignServiceCreator
+import com.example.sopt_assignment_dabin.util.MyUtil.getHelper
+import com.example.sopt_assignment_dabin.util.MyUtil.shortToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var getResultText: ActivityResultLauncher<Intent>//회원가입 데이터 리턴받을 때 사용
@@ -33,7 +30,6 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setAnimation(this)
 
         //모든 데이터가 입력되었을때 로그인 버튼 색깔 바뀌게하기->addTextChangedListener 사용
@@ -58,10 +54,9 @@ class SignInActivity : AppCompatActivity() {
             clickLogin()
         }
 
-        //자동 로그인
+        //자동로그인
         autoClickEvent()
-        isAutoLogin(this)
-
+        isAutoLogin()
 
         //회원가입 버튼시 이벤트->데이터 리턴받아와야함!
         binding.tvSignUp.setOnClickListener {
@@ -105,6 +100,26 @@ class SignInActivity : AppCompatActivity() {
         getResultText.launch(intent)
     }
 
+    //자동 로그인클릭 이벤트 발생
+    private fun autoClickEvent() {
+        binding.ctAutoLogin.setOnClickListener {
+            binding.ctAutoLogin.toggle()
+            setAutoLogin(binding.ctAutoLogin.isChecked, binding.etIdIn.text.toString(), binding.etPassIn.text.toString())
+        }
+    }
+
+    //자동로그인 선택시 유저 정보 저장
+    private fun setAutoLogin(autoLogin: Boolean, id: String, password: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                getHelper().updateInfo(autoLogin, id, password)
+            } catch (e: Exception) {
+                e.toString()
+            }
+        }
+    }
+
+    //일반 로그인 시 서버통신
     private fun initNetwork() {
         val requestData = SigninRequestData(
             email = binding.etIdIn.text.toString(),
@@ -126,25 +141,14 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun autoClickEvent() {
-        binding.ctAutoLogin.setOnClickListener {
-            binding.ctAutoLogin.toggle()
-            AutoLogin.setAutoLogin(
-                this,
-                binding.ctAutoLogin.isChecked,
-                binding.etIdIn.text.toString(),
-                binding.etPassIn.text.toString()
-            )
-        }
-    }
-
-    fun isAutoLogin(context: Context) {
-        if (AutoLogin.getAutoLogin(this)) {
-            val requestData = SigninRequestData(
-                email = AutoLogin.getSharedpf(context).getString(AutoLogin.USER_ID, "")!!,
-                password = AutoLogin.getSharedpf(context).getString(AutoLogin.USER_PASS, "")!!
-            )
-            CoroutineScope(Dispatchers.IO).launch {
+    //자동 로그인 체크되어있을시 서버통신
+    private fun isAutoLogin() {
+        CoroutineScope(Dispatchers.IO).launch {
+            if (getHelper().get().autoLogin) {
+                val requestData = SigninRequestData(
+                    email = getHelper().get().id,
+                    password = getHelper().get().password
+                )
                 try {
                     SignServiceCreator.signinService.signinLogin(requestData)
                     withContext(Dispatchers.Main) {
@@ -154,13 +158,14 @@ class SignInActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    e.toString()
                 }
             }
         }
     }
 }
 
+/*  sharedpreference로 한거!
 object AutoLogin {
 
     private const val STORAGE_KEY = "com.example.sopt_assignment_dabin.app"
@@ -201,4 +206,4 @@ object AutoLogin {
     fun getSharedpf(context: Context): SharedPreferences {
         return context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
     }
-}
+}*/

@@ -61,4 +61,6 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.1.1"
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5" // navigation component
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"  // navigation component
+    implementation "androidx.room:room-ktx:2.3.0"  //room
+    kapt "androidx.room:room-compiler:2.3.0"  //room
 }
