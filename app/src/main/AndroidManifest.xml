@@ -15,9 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.PreferenceActivity"
-            android:exported="true" />
+        <activity android:name=".ui.PreferenceActivity" />
         <activity
             android:name=".ui.OnBoardingActivity"
             android:exported="true">
@@ -31,15 +29,11 @@
         <activity android:name=".HomeActivityDataBinding" />
         <activity
             android:name=".ui.SignUpActivity"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.HomeActivity" />
         <activity
             android:name=".ui.SignInActivity"
-            android:exported="true"
             android:windowSoftInputMode="adjustPan">
         </activity>
-
     </application>
-
 </manifest>

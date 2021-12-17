@@ -59,15 +59,14 @@ class RepositoryFragment : Fragment() {
                 initRepositoryAdapter(response)
 
             } catch (e: Exception) {
-                Log.d("successfully connect with Server", e.printStackTrace().toString())
-
+                Log.d("successfully connect with Server", e.toString())
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
         _binding = null
+        super.onDestroyView()
     }
 }
 
