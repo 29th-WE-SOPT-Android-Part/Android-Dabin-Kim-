@@ -768,6 +768,347 @@ interface SigninService {
 - 팔로워 bio 불러오는거 구현하긴 했는데 우당탕탕 돌아가는 느낌이다. 스파게티 코드란 이런걸까? ㅋ..ㅋ
 </details>
  
+   <details> 
+ <summary>week7</summary>
+ <!-- summary 아래 한칸 공백 두어야함 --> 
+ 
+
+
+https://user-images.githubusercontent.com/84564695/146494606-e2c53548-c03b-4260-a55e-5eb74d075acc.mp4
+
+
+https://user-images.githubusercontent.com/84564695/146494533-28e2930c-f6d2-4478-ab56-fb02ce97ac56.mp4
+
+
+
+## ✅Level1-1,1-2
+### ✔***온보딩 만들기***
+ - #### layout
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_onboarding"
+    app:startDestination="@id/onBoardingFragment1">
+
+    <fragment
+        android:id="@+id/onBoardingFragment1"
+        android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment1"
+        android:label="첫번째 화면"
+        tools:layout="@layout/fragment_on_boarding1">
+        <action
+            android:id="@+id/action_onBoardingFragment1_to_onBoardingFragment2"
+            app:destination="@id/onBoardingFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment2"
+        android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment2"
+        android:label="두번째 화면"
+        tools:layout="@layout/fragment_on_boarding2">
+        <action
+            android:id="@+id/action_onBoardingFragment2_to_onBoardingFragment3"
+            app:destination="@id/onBoardingFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment3"
+        android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment3"
+        android:label="세번째 화면"
+        tools:layout="@layout/fragment_on_boarding3">
+        <action
+            android:id="@+id/action_onBoardingFragment3_to_onBoardingFragment1"
+            app:destination="@+id/onBoardingFragment1"
+            app:popUpTo="@+id/onBoardingFragment1"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_onBoardingFragment3_to_signInActivity"
+            app:destination="@id/signInActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/signInActivity"
+        android:name="com.example.sopt_assignment_dabin.ui.SignInActivity"
+        android:label="activity_sign_in"
+        tools:layout="@layout/activity_sign_in" />
+</navigation>
+```
+### ✔***SharedPreferences 활용해서 자동로그인/자동로그인 해제***
+```kotlin
+  object AutoLogin {
+
+    private const val STORAGE_KEY = "com.example.sopt_assignment_dabin.app"
+    val ONBOARDING = "ONBOARDING"
+    val AUTO_LOGIN = "AUTO_LOGIN"
+    val USER_ID = "USER_ID"
+    val USER_PASS = "USER_PASS"
+
+    fun setOnBoarding(context: Context, init: Boolean) {
+        getSharedpf(context).edit()
+            .putBoolean(ONBOARDING, init)
+            .apply()
+    }
+
+    fun getOnBoarding(context: Context): Boolean {
+        return getSharedpf(context).getBoolean(ONBOARDING, true)
+    }
+
+    fun getAutoLogin(context: Context): Boolean {
+        return getSharedpf(context).getBoolean(AUTO_LOGIN, false)
+    }
+
+    fun setAutoLogin(context: Context, checked: Boolean, id: String = "", pass: String = "") {
+        getSharedpf(context).edit()
+            .putBoolean(AUTO_LOGIN, checked)
+            .putString(USER_ID, id)
+            .putString(USER_PASS, pass)
+            .apply()
+    }
+
+    fun removeAutoLogin(context: Context) {
+        getSharedpf(context).edit()
+            .remove(USER_ID)
+            .remove(USER_PASS)
+            .apply()
+    }
+
+    fun getSharedpf(context: Context): SharedPreferences {
+        return context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
+    }
+}
+```
+- 실제 파일엔 Room으로 바꿔서 해당 SharedPreferences 사용 로직은 주석처리되어 있습니다!
+  
+### ✔**본인이 사용하는 Util 클래스 코드 및 패키징 방식 리드미에 정리**
+  ![](https://images.velog.io/images/dabin/post/d04708a1-8d6b-476d-bbcd-e792c01d8811/image.png)
+  - 과제에서 배운 내용 기반으로 리팩토링 했습니다
+  - Util 클래스는 토스트 띄우는 확장함수랑 RoomDAO가져오는 확장함수 사용했어여
+  
+## ✅Level2-1,2-2
+### ✔***NavigationComponent에서 BackStack관리+NavigationComponent와 ToolBar 연동***
+```XML
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+```
+  - 툴바 만들기
+```xml
+      <fragment
+        android:id="@+id/onBoardingFragment3"
+        android:name="com.example.sopt_assignment_dabin.ui.OnBoardingFragment3"
+        android:label="세번째 화면"
+        tools:layout="@layout/fragment_on_boarding3">
+        <action
+            android:id="@+id/action_onBoardingFragment3_to_onBoardingFragment1"
+            app:destination="@+id/onBoardingFragment1"
+            app:popUpTo="@+id/onBoardingFragment1"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_onBoardingFragment3_to_signInActivity"
+            app:destination="@id/signInActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/signInActivity"
+        android:name="com.example.sopt_assignment_dabin.ui.SignInActivity"
+        android:label="activity_sign_in"
+        tools:layout="@layout/activity_sign_in" />
+```
+  - xml에서 `app:popUpTo`, `app:popUpToInclusive` 속성 추가하고 action추가하기
+```kotlin
+ override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_onBoardingFragment3_to_onBoardingFragment1)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentOnBoarding3Binding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.btNext.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    requireActivity().getHelper().insert(RoomLogin(false, false, "", ""))
+                } catch (e: Exception) {
+                    e.toString()
+                }
+            }
+            findNavController().navigate(R.id.action_onBoardingFragment3_to_signInActivity)
+            requireActivity().finish()
+        }
+    }
+```
+  - Fragment3에서 NavigationComponent에서 BackStack관리+NavigationComponent와 ToolBar 연동하는 로직
+## ✅Level3
+### ✔***Room을 활용해서 자동로그인 로직 만들기***
+```kotlin
+  @Entity(tableName = "table_login")
+class RoomLogin {
+    @ColumnInfo
+    var onBording = true
+
+    @ColumnInfo
+    var autoLogin = false
+
+    @PrimaryKey
+    @ColumnInfo
+    var id = ""
+
+    @ColumnInfo
+    var password = ""
+
+    constructor(onBording: Boolean = true, autoLogin: Boolean = false, id: String, password: String) {
+        this.onBording = onBording
+        this.autoLogin = autoLogin
+        this.id = id
+        this.password = password
+    }
+}
+```
+  - 테이블 만들기
+```kotlin
+@Dao
+interface RoomDAO {
+
+    //유저 정보 만들기
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(login: RoomLogin)
+
+    //유저 정보 얻기
+    @Query("SELECT * FROM table_login ")
+    fun get(): RoomLogin
+
+    //자동로그인 선택시 true로 바꾸고 정보 업데이트
+    @Query("UPDATE table_login SET autoLogin =:autoLogin,id=:id,password=:password")
+    fun updateInfo(autoLogin: Boolean, id: String, password: String)
+
+    //설정에서 자동로그인 해제 시 false로 바꾸기
+    @Query("UPDATE table_login SET autoLogin =:autoLogin")
+    fun updateLogin(autoLogin: Boolean)
+
+    //설정에서 자동로그인 해제 시 유저정보 삭제
+    @Query("DELETE FROM table_login WHERE id = :id")
+    fun delete(id: String)
+}
+```
+  - RoomDAO 만들기  
+  
+```kotlin
+@Database(entities = [RoomLogin::class], version = 1, exportSchema = false)
+abstract class RoomHelper : RoomDatabase() {
+    abstract fun roomInfoDao(): RoomDAO
+
+    companion object {
+        private var instance: RoomHelper? = null
+
+        @Synchronized
+        fun getInstance(context: Context): RoomHelper? {
+            if (instance == null) {
+                synchronized(RoomHelper::class) {
+                    instance = Room.databaseBuilder(
+                        context,
+                        RoomHelper::class.java,
+                        "login_database"
+                    ).build()
+                }
+            }
+            return instance
+        }
+    }
+}
+```
+  - 데이터베이스 역할하는 RoomHelper 만들기  
+```kotlin
+      //자동 로그인클릭 이벤트 발생
+    private fun autoClickEvent() {
+        binding.ctAutoLogin.setOnClickListener {
+            binding.ctAutoLogin.toggle()
+            setAutoLogin(binding.ctAutoLogin.isChecked, binding.etIdIn.text.toString(), binding.etPassIn.text.toString())
+        }
+    }
+
+    //자동로그인 선택시 유저 정보 저장
+    private fun setAutoLogin(autoLogin: Boolean, id: String, password: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                getHelper().updateInfo(autoLogin, id, password)
+            } catch (e: Exception) {
+                e.toString()
+            }
+        }
+    }
+
+    //자동 로그인 체크되어있을시 서버통신
+    private fun isAutoLogin() {
+        CoroutineScope(Dispatchers.IO).launch {
+            if (getHelper().get().autoLogin) {
+                val requestData = SigninRequestData(
+                    email = getHelper().get().id,
+                    password = getHelper().get().password
+                )
+                try {
+                    SignServiceCreator.signinService.signinLogin(requestData)
+                    withContext(Dispatchers.Main) {
+                        shortToast("자동 로그인")
+                    }
+                    val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } catch (e: Exception) {
+                    e.toString()
+                }
+            }
+        }
+    }
+```
+- SignInActivity 에서 자동로그인 로직 구현하기
+```kotlin
+      private fun autoLogin() {
+        binding.ctAutoLogin.setOnClickListener {
+            binding.ctAutoLogin.toggle()
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    getHelper().updateLogin(!binding.ctAutoLogin.isChecked)
+                } catch (e: Exception) {
+                    e.toString()
+                }
+            }
+        }
+    }
+```
+- 환경설정에서 자동로그인 해제하면 유저정보에 자동로그인 여부 업데이트 되게하였다.
+```kotlin
+        //앱을 처음 실행하는 경우가 아니면 온보딩 화면 안뜨게 함
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                if (getHelper().get().onBording == false) {
+                    send()
+                }
+            } catch (e: Exception) {
+                e.toString()
+            }
+        }
+```
+ - onBoardingActivity에서 온보딩 처음뜨는건지 아닌지 정보 가져와서 처음뜨는거 아니면 바로 SignInActivity로 가게 했다.
+## ✅배운 것
+- 7차 세미나때 배운건 거의 다 새롭게 알게 되었다.
+- 대략적으로 알고있던 SharedPreferences랑 Room을 찍먹해봐서 좋았다.
+- 배울게 천지다
+</details> 
+   
 ![github_김의진_ver1-10](https://user-images.githubusercontent.com/70698151/135753837-7997f154-ca2b-4b7a-bf51-a6fe3f29947f.png)
 
 
