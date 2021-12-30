@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pinkpop"
-    tools:context=".viewpager_fragment.ProfileFragment">
+    tools:context=".ui.ProfileFragment">
 
     <ImageView
         android:id="@+id/iv_profile"
@@ -38,6 +38,7 @@
         app:layout_constraintTop_toTopOf="@+id/iv_preference" />
 
     <TextView
+        android:includeFontPadding="false"
         android:id="@+id/tv_name_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,8 +53,9 @@
 
     <TextView
         android:id="@+id/tv_id_profile"
-        android:layout_width="63dp"
-        android:layout_height="21dp"
+        android:layout_width="wrap_content"
+        android:includeFontPadding="false"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/notosanskr_regular"
         android:text="dabin0318"
         android:textColor="@color/white"
@@ -65,7 +67,6 @@
         android:id="@+id/tv_introduce_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:fontFamily="@font/notosanskr_medium"
         android:text="초보 개발자 김다빈"
         android:textColor="@color/white"
@@ -101,9 +102,7 @@
         android:background="@drawable/bg_orange_white_selector"
         android:fontFamily="@font/notosanskr_regular"
         android:paddingStart="45dp"
-        android:paddingTop="13dp"
         android:paddingEnd="45dp"
-        android:paddingBottom="13dp"
         android:text="팔로워 목록"
         android:textColor="@drawable/bg_white_gray_selector"
         android:textFontWeight="400"
@@ -123,9 +122,7 @@
         android:background="@drawable/bg_orange_white_selector"
         android:fontFamily="@font/notosanskr_regular"
         android:paddingStart="35dp"
-        android:paddingTop="13dp"
         android:paddingEnd="35dp"
-        android:paddingBottom="13dp"
         android:text="레파지토리 목록"
         android:textColor="@drawable/bg_white_gray_selector"
         android:textColorHint="@color/Gray1"

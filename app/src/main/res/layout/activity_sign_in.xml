@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sign.SignInActivity">
+    tools:context=".ui.SignInActivity">
 
     <ImageView
         android:id="@+id/iv_signin_github"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="162dp"
         android:src="@drawable/img_github"
         android:textColor="@color/sopt"
         android:textSize="40dp"
@@ -19,6 +19,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="auto login"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_id_in"
+        app:layout_constraintEnd_toStartOf="@+id/ct_auto_login"
+        app:layout_constraintTop_toTopOf="@+id/tv_id_in" />
+
+
+    <CheckedTextView
+        android:id="@+id/ct_auto_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkMark="@drawable/selector_auto_login"
+        android:checked="false"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_id_in"
+        app:layout_constraintEnd_toEndOf="@+id/et_id_in"
+        app:layout_constraintTop_toTopOf="@+id/tv_id_in" />
 
     <TextView
         android:id="@+id/tv_id_in"
@@ -49,8 +69,8 @@
         android:fontFamily="@font/notosanskr_regular"
         android:hint="깃허브 아이디를 입력해주세요."
         android:paddingStart="16dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:textColorHint="@color/hintGray"
         android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_pass_in"
@@ -86,8 +106,8 @@
         android:hint="비밀번호를 입력해주세요"
         android:inputType="textPassword"
         android:paddingStart="16dp"
-        android:paddingTop="13dp"
-        android:paddingBottom="13dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:textColorHint="@color/hintGray"
         android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/bv_login"
@@ -100,8 +120,8 @@
         android:id="@+id/bv_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="173dp"
-        android:layout_marginBottom="74dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="200dp"
         android:background="@drawable/rectangle_gray_radius_8"
         android:text="로그인"
         android:textColor="@color/white"
@@ -141,12 +161,12 @@
         android:includeFontPadding="false"
         android:text="계정이 없으신가요?"
         android:textColor="@color/Gray3"
+        android:layout_marginBottom="60dp"
         android:textFontWeight="400"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_sign_up"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bv_login"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/bv_login" />
 </androidx.constraintlayout.widget.ConstraintLayout>
